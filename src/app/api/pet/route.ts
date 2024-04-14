@@ -21,6 +21,7 @@ export function GET(req: Request, res: NextResponse<Pet>) {
   }
 }
 
+//post debe usarse con lapalabra post no usar handlers ni otro name
 export const POST = async (req: Request) => {
   let body = await req.json();
   console.log(body);
