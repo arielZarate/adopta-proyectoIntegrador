@@ -16,6 +16,8 @@ El proyecto tiene como objetivo ayudar a encontrar mascotas perdidas o animales 
 
 ## Tecnologías Utilizadas
 
+#### Nextjs14 usando appRouter
+
 - **Frontend**: Next.js
 - **Backend**: API de Next.js
 - **Base de Datos**: MongoDB Atlas
@@ -39,7 +41,8 @@ El proyecto tiene como objetivo ayudar a encontrar mascotas perdidas o animales 
 - Implementación de un sistema de recomendaciones basado en el historial de búsqueda del usuario.
 - Integración con redes sociales para difundir las publicaciones de mascotas perdidas.
 
-
-
 ## Fuentes del proyecto
+
 - www.freepik.es
+- https://nextjs.org/docs
+- https://www.pexels.com/es-es/
