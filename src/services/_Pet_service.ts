@@ -5,12 +5,19 @@ import { IPet } from "@/interfaces/IPet";
 import { handlerError } from "@/utils/HandlerErros";
 /**
  TODO: =======SERVICES PETS========
- 
+ modelo
+ id?: string; ///OPTIONAL SE GENERA SOLO
+  name: string;
+  race: string;
+  color: string;
+  age: number;
+  height: string;
+  description: string;
+}
  */
 
 export const _get = async () => {
   try {
-    //validar query
     DB();
     const listPets = await Pet.find();
 
@@ -20,19 +27,9 @@ export const _get = async () => {
   }
 };
 
-/**
- id?: string; ///OPTIONAL SE GENERA SOLO
-  name: string;
-  race: string;
-  color: string;
-  age: number;
-  height: string;
-  description: string;
-};
- */
-
 export const _post = async (body: IPet) => {
   try {
+    DB();
     const pet_created = await Pet.create(body);
 
     return pet_created;
@@ -41,77 +38,34 @@ export const _post = async (body: IPet) => {
   }
 };
 
-/**
-
-
-
-
-
-
-export const _get = async () => {
+export const _getById = async (id: string) => {
   try {
-    //validar query
     DB();
-    //const listPets = await
-    return;
+    const petFound = await Pet.findById(id);
+    return petFound;
   } catch (error) {
-    if (error instanceof mongoose.Error) {
-      console.log(error.message);
-      return Response.json(
-        {
-          message: error.message,
-        },
-        {
-          status: 500,
-        }
-      );
-    }
-
-    if (error instanceof Error) {
-      console.log(error.message);
-      return Response.json(
-        {
-          message: error.message,
-        },
-        {
-          status: 500,
-        }
-      );
-    }
+    handlerError(error);
   }
 };
 
- export const _get = async () => {
+export const _update = async (id: string, body: IPet) => {
   try {
-    //validar query
     DB();
-    //const listPets = await
-    return;
+    const petUpdated = await Pet.findByIdAndUpdate(id, body, {
+      new: true,
+    });
+    return petUpdated;
   } catch (error) {
-    if (error instanceof mongoose.Error) {
-      console.log(error.message);
-      return Response.json(
-        {
-          message: error.message,
-        },
-        {
-          status: 500,
-        }
-      );
-    }
-
-    if (error instanceof Error) {
-      console.log(error.message);
-      return Response.json(
-        {
-          message: error.message,
-        },
-        {
-          status: 500,
-        }
-      );
-    }
+    handlerError(error);
   }
 };
- 
- */
+
+export const _delete = async (id: string) => {
+  try {
+    DB();
+    const petDeleted = await Pet.findByIdAndDelete(id);
+    return petDeleted;
+  } catch (error) {
+    handlerError(error);
+  }
+};

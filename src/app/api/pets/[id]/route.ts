@@ -1,13 +1,12 @@
 import Pet from "@/models/Pet";
 import { handlerError } from "@/utils/HandlerErros";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-
+import { _delete, _getById, _update } from "@/services/_Pet_service";
 // TODO: metodo que devuleve mascotas por id
 export async function GET(req: Request, { params }: Params) {
+  let id = params.id;
   try {
-    let id = params.id;
-    //conectar bd o llamar la service
-    const petFound = await Pet.findById(id);
+    const petFound = await _getById(id);
     if (!petFound) {
       console.log(` pet by id ${id} not found `);
       return Response.json(`Pet by id ${id} not found`, {
@@ -21,18 +20,12 @@ export async function GET(req: Request, { params }: Params) {
   }
 }
 
+//TODO: put update
 export async function PUT(req: Request, { params }: Params) {
+  let body = await req.json();
+  let id = params.id;
   try {
-    let body = await req.json();
-    let id = params.id;
-
-    console.log("id", id);
-
-    //llamar a service
-
-    const petUpdated = await Pet.findByIdAndUpdate(id, body, {
-      new: true,
-    });
+    const petUpdated = await _update(id, body);
     if (!petUpdated) {
       console.log(` update falled`);
       return Response.json(`update falled`, {
@@ -46,10 +39,10 @@ export async function PUT(req: Request, { params }: Params) {
   }
 }
 
-export async function DELETE(req: Request, { params }: Params, res: Response) {
+export async function DELETE(req: Request, { params }: Params) {
+  let id = params.id;
   try {
-    let id = params.id;
-    const petDeleted = await Pet.findByIdAndDelete(id);
+    const petDeleted = await _delete(id);
     if (!petDeleted) {
       console.log(`deleted not succesfull`);
       return Response.json(`deleted not succesfull`, {

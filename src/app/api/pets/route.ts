@@ -20,34 +20,35 @@ export async function GET(req: Request) {
   let url = new URL(req.url);
   let urlSearchParams = url.searchParams;
   //TODO: search es el parametro que busca podria ser otro nombre tambien
-  let query = urlSearchParams.get("search");
+  let searchName = urlSearchParams.get("name");
 
   try {
-    if (query) {
-      const petFound = await Pet.findOne({
-        name: query,
+    const pets = await _get(); //trae todos los pets
+
+    if (!pets) {
+      console.error("pets not found");
+      return Response.json("Pet not found 🥲", {
+        status: 404,
       });
+    }
+
+    //ahora valido por query==name
+    if (searchName) {
+      //ahora filtro por cada name 😁
+      const petFound = pets?.filter((p) => p.name.includes(searchName));
 
       if (!petFound) {
-        console.log(` pet by query ${query} not found `);
-        return Response.json(`Pet by query ${query} not found`, {
+        console.log(` pet by query ${searchName} not found `);
+        return Response.json(`Pet by query ${searchName} not found`, {
           status: 400,
         });
       }
-
+      console.log(petFound);
       return Response.json(petFound);
     }
 
     //por false solo busca de forma predeterminada
     else {
-      const pets = await _get();
-      if (!pets) {
-        console.error("pets not found");
-        return Response.json("Pet not found 🥲", {
-          status: 404,
-        });
-      }
-
       return Response.json(pets);
     }
   } catch (error) {}
