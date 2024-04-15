@@ -1,5 +1,8 @@
 import mongoose from "mongoose";
 
+//TODO: conexion a mongodb , puede usar mongo compas o atlas
+// recordar que mongo genera un id de tipo  ObjectId (objeto) => _id
+
 export default async function DB() {
   try {
     let db = null;

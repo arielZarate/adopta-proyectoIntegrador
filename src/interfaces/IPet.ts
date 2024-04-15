@@ -1,13 +1,15 @@
-
 //===========INTERFACES===============
 
-export type Pet={
-id?:string,///OPTIONAL SE GENERA SOLO
-nombre:string,
-color:string,
-height:number,
-race:string,
-description:string    
+export interface IPet {
+  id?: string; ///OPTIONAL SE GENERA SOLO
+  name: string;
+  race: string;
+  color: string;
+  age: number;
+  height: string;
+  description: string;
 }
 
-
+export type ArrayPets = {
+  pets: IPet[];
+};
