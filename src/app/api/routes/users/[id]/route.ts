@@ -1,6 +1,6 @@
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { _getById, _delete, _update } from "@/services/_User_service";
-import { handlerError } from "@/utils/HandlerErros";
+import { _getById, _delete, _update } from "@/app/api/services/_User_service";
+import { handlerError } from "@/app/api/helpers/HandlerError";
 //TODO: metodos controllers de users
 
 // TODO: metodo que devuleve mascotas por id

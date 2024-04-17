@@ -1,7 +1,7 @@
-import Pet from "@/models/Pet";
-import { handlerError } from "@/utils/HandlerErros";
+import Pet from "@/app/api/models/Pet";
+import { handlerError } from "@/app/api/helpers/HandlerError";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { _delete, _getById, _update } from "@/services/_Pet_service";
+import { _delete, _getById, _update } from "@/app/api/services/_Pet_service";
 // TODO: metodo que devuleve mascotas por id
 export async function GET(req: Request, { params }: Params) {
   let id = params.id;

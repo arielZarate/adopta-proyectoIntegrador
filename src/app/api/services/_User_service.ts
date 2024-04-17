@@ -1,7 +1,7 @@
-import DB from "@/libs/DB";
-import User from "@/models/User";
+import DB from "@/app/api/libs/DB";
+import User from "@/app/api/models/User";
 import { IUser } from "@/interfaces/IUser";
-import { handlerError } from "@/utils/HandlerErros";
+import { handlerError } from "@/app/api/helpers/HandlerError";
 /**
  TODO: =======SERVICES USER========
  

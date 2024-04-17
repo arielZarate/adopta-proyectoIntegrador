@@ -1,9 +1,17 @@
+import Home from "@/containers/home-container";
 
+/*TODO: Esta es la 1era pagina que se ejecuta en el front
+  por un tema de que quizas halla una complejidad luego , dejare esta como
+  la page App.tsx y dentro de esta creare un contenedor home donde ira todo 
+  
+  App ==> Home ==> * todas las page 
+
+  */
 
 export default function App() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-       App
-    </main>
+    <div className="flex min-h-screen min-w-full">
+      <Home />
+    </div>
   );
 }

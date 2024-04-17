@@ -1,7 +1,6 @@
-import { IPet, ArrayPets } from "@/interfaces/IPet";
-import Pet from "@/models/Pet";
-import { _get, _post } from "@/services/_Pet_service";
-import { handlerError } from "@/utils/HandlerErros";
+import User from "@/app/api/models/User";
+import { _get, _post } from "@/app/api/services/_User_service";
+import { handlerError } from "@/app/api/helpers/HandlerError";
 
 //======================================
 //TODO: este metodo get devuelve una lista de mascotas o una mascota por nombre (query)
@@ -20,63 +19,68 @@ export async function GET(req: Request) {
   let url = new URL(req.url);
   let urlSearchParams = url.searchParams;
   //TODO: search es el parametro que busca podria ser otro nombre tambien
-  let searchName = urlSearchParams.get("name");
+  let searchEmail = urlSearchParams.get("search");
 
   try {
-    const pets = await _get(); //trae todos los pets
+    const users = await _get(); //trae todos los pets
 
-    if (!pets) {
-      console.error("pets not found");
-      return Response.json("Pet not found 🥲", {
+    console.log(users);
+    if (!users) {
+      console.error("users not found");
+      return Response.json("users not found 🥲", {
         status: 404,
       });
     }
 
     //ahora valido por query==name
-    if (searchName) {
+    if (searchEmail) {
       //ahora filtro por cada name 😁
-      const petFound = pets?.filter((p) => p.name.includes(searchName));
 
-      if (!petFound) {
-        console.log(` pet by query ${searchName} not found `);
-        return Response.json(`Pet by query ${searchName} not found`, {
+      console.log("el search emial es", searchEmail);
+      const userFound = users.filter((u) => u.email.includes(searchEmail));
+
+      if (!userFound) {
+        console.log(` user by email ${searchEmail} not found `);
+        return Response.json(`user by email ${searchEmail} not found`, {
           status: 400,
         });
       }
-      console.log(petFound);
-      return Response.json(petFound);
+      console.log("se encontro a ", userFound);
+      return Response.json(userFound);
     }
 
     //por false solo busca de forma predeterminada
     else {
-      return Response.json(pets);
+      return Response.json(users);
     }
   } catch (error) {}
 }
 
 //post debe usarse con lapalabra post no usar handlers ni otro name
 export const POST = async (req: Request) => {
-  const { name, race, color, age, height, description } = await req.json();
+  const { name, lastName, age, phone, address, email, password } =
+    await req.json();
   // console.log(name, race, color, age, height, description);
   try {
     ///si hay que validar algo lo hacemos en el controller
     let newObj = {
       name,
-      race,
-      color,
+      lastName,
       age,
-      height,
-      description,
+      phone,
+      address,
+      email,
+      password,
     };
 
-    const pet = await _post(newObj);
+    const user = await _post(newObj);
 
-    if (!pet) {
-      console.log("Error:pet no created");
-      return Response.json("Error:Schema Pet not created", { status: 400 });
+    if (!user) {
+      console.log("Error:user no created");
+      return Response.json("Error:Schema User not created", { status: 400 });
     }
 
-    return Response.json(pet);
+    return Response.json(user);
   } catch (error) {
     handlerError(error);
   }

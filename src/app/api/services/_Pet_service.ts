@@ -1,8 +1,8 @@
-import DB from "@/libs/DB";
+import DB from "@/app/api/libs/DB";
 import mongoose from "mongoose";
-import Pet from "@/models/Pet";
+import Pet from "@/app/api/models/Pet";
 import { IPet } from "@/interfaces/IPet";
-import { handlerError } from "@/utils/HandlerErros";
+import { handlerError } from "@/app/api/helpers/HandlerError";
 /**
  TODO: =======SERVICES PETS========
  modelo
