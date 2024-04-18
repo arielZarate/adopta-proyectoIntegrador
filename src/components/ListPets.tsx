@@ -19,12 +19,9 @@ const ListPets = () => {
   return (
     <>
       {data?.map((p: IPet) => (
-        <div className="flex flex-col  m-3">
+        <div className="flex flex-col  m-3" key={p.id}>
           <div className="flex  items-center justify-between">
-            <div
-              key={p.id}
-              className=" bg-slate-800 text-white border-2 border-green-500  rounded-lg p-4 "
-            >
+            <div className=" bg-slate-800 text-white border-2 border-green-500  rounded-lg p-4 ">
               <p>{p.name}</p>
               <p>{p.race}</p>
               <p>{p.age}</p>
