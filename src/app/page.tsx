@@ -10,8 +10,8 @@ import Home from "@/containers/home-container";
 
 export default function App() {
   return (
-    <div className="flex min-h-screen min-w-full">
+    <>
       <Home />
-    </div>
+    </>
   );
 }

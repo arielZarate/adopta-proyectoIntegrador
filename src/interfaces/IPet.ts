@@ -1,12 +1,15 @@
 //===========INTERFACES===============
 
 export interface IPet {
-  id?: string; ///OPTIONAL SE GENERA SOLO
+  _id?: string; // OPCIONAL: Se genera automáticamente
   name: string;
-  race: string;
+  species: string;
+  breed: string;
+  gender: string;
   color: string;
   age: number;
   height: string;
+  image: { url: string };
   description: string;
 }
 

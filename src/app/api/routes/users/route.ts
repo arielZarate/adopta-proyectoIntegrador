@@ -58,22 +58,15 @@ export async function GET(req: Request) {
 
 //post debe usarse con lapalabra post no usar handlers ni otro name
 export const POST = async (req: Request) => {
-  const { name, lastName, age, phone, address, email, password } =
-    await req.json();
-  // console.log(name, race, color, age, height, description);
-  try {
-    ///si hay que validar algo lo hacemos en el controller
-    let newObj = {
-      name,
-      lastName,
-      age,
-      phone,
-      address,
-      email,
-      password,
-    };
+  /**
+   const { name, lastName, age, phone, address, my_pets, email, password }
+   */
 
-    const user = await _post(newObj);
+  try {
+    const body = await req.json();
+    ///si hay que validar algo lo hacemos en el controller
+
+    const user = await _post(body);
 
     if (!user) {
       console.log("Error:user no created");

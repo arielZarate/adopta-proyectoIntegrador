@@ -23,7 +23,7 @@ import { handlerError } from "@/app/api/helpers/HandlerError";
 export const _get = async () => {
   try {
     DB();
-    const listUsers = await User.find();
+    const listUsers = await User.find().populate("my_pets");
 
     return listUsers;
   } catch (error) {
@@ -31,12 +31,20 @@ export const _get = async () => {
   }
 };
 
-export const _post = async (body: IUser) => {
+export const _post = async (body: IUser | IUser[]) => {
   try {
+    let user_created = null;
     DB();
-    const user_created = await User.create(body);
 
-    return user_created;
+    if (Array.isArray(body)) {
+      user_created = await User.create(body);
+
+      return user_created;
+    } else {
+      user_created = await User.create(body);
+
+      return user_created;
+    }
   } catch (error) {
     handlerError(error);
   }

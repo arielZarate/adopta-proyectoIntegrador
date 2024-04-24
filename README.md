@@ -46,3 +46,14 @@ El proyecto tiene como objetivo ayudar a encontrar mascotas perdidas o animales 
 - www.freepik.es
 - https://nextjs.org/docs
 - https://www.pexels.com/es-es/
+
+### notas para despues
+
+Para un sistema que maneje perros y gatos, los campos que has mencionado hasta ahora son bastante completos. Sin embargo, aquí hay algunas consideraciones adicionales que podrías tener en cuenta:
+
+Género (Gender): Podrías incluir un campo para el género de la mascota, como "macho" o "hembra".
+Esterilización (Spayed/Neutered): Puedes agregar un campo para indicar si la mascota ha sido esterilizada o castrada.
+Microchip: Si la mascota tiene un microchip de identificación, podrías incluir un campo para almacenar su número de microchip.
+Vacunas (Vaccinations): Podrías tener campos para registrar las vacunas administradas a la mascota y sus fechas correspondientes.
+Salud (Health): Un campo para registrar información relevante sobre la salud de la mascota, como condiciones médicas crónicas o alergias.
+Imagen (Image): Puedes incluir un campo para almacenar la imagen de la mascota, lo que facilita la identificación visual y puede ser útil para propósitos de adopción o búsqueda en caso de pérdida.

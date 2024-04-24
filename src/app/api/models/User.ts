@@ -37,6 +37,13 @@ const SchemaUser = new Schema(
       },
     },
 
+    my_pets: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Pet",
+      },
+    ],
+
     ////////////////datos para el register y login////////////////////////
 
     email: {

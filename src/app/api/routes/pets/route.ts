@@ -58,27 +58,31 @@ export async function GET(req: Request) {
 
 //post debe usarse con lapalabra post no usar handlers ni otro name
 export const POST = async (req: Request) => {
-  const { name, race, color, age, height, description } = await req.json();
-  // console.log(name, race, color, age, height, description);
+  /**
+   *   const {
+    name,
+    species,
+    breed,
+    gender,
+    color,
+    age,
+    height,
+    image,
+    description,
+  } = await req.json();
+  
+   */
+
   try {
-    ///si hay que validar algo lo hacemos en el controller
-    let newObj = {
-      name,
-      race,
-      color,
-      age,
-      height,
-      description,
-    };
+    const body = await req.json();
+    const petsCreated = await _post(body);
 
-    const pet = await _post(newObj);
-
-    if (!pet) {
-      console.log("Error:pet no created");
-      return Response.json("Error:Schema Pet not created", { status: 400 });
+    if (!petsCreated) {
+      console.error("Error: Pets not created");
+      return Response.json("Error: Pets not created", { status: 400 });
     }
 
-    return Response.json(pet);
+    return Response.json(petsCreated);
   } catch (error) {
     handlerError(error);
   }

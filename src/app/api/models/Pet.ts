@@ -3,9 +3,13 @@ import mongoose, { model, Schema, models } from "mongoose";
 /*
 id?:string,///OPTIONAL SE GENERA SOLO
 name:string,
+breed,
+species,
+gender,
 color:string,
+age,
 height:number,
-race:string,
+image,
 description:string    
 */
 const SchemaPet = new Schema(
@@ -18,9 +22,20 @@ const SchemaPet = new Schema(
       min: [2, "the min character is 2 and max 30"],
       max: [20, "the max character is 20"],
     },
-    race: {
+    species: {
       type: String,
-      required: [true, "the race is required verify!!"],
+      required: [true, "the species is required , dog or cat"],
+      enum: ["dog", "cat"], // Solo permite 'dog' (perro) o 'cat' (gato)
+    },
+    breed: {
+      type: String,
+      required: [true, "the race is required verify"],
+    },
+
+    gender: {
+      type: String,
+      required: [true, "the gender is required"],
+      enum: ["male", "female"],
     },
     //TODO: color, altura y raza vendran selecccionados por selectores 🤠
     color: {
@@ -30,11 +45,15 @@ const SchemaPet = new Schema(
 
     age: {
       type: Number,
-      required: [true, "the age is required"],
+      //required: [true, "the age is required"],
     },
     height: {
       type: String,
       required: [true, "the height pet is required verify"],
+    },
+
+    image: {
+      url: String,
     },
 
     description: {

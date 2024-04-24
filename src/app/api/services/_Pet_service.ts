@@ -27,12 +27,19 @@ export const _get = async () => {
   }
 };
 
-export const _post = async (body: IPet) => {
+export const _post = async (body: IPet | IPet[]) => {
   try {
     DB();
-    const pet_created = await Pet.create(body);
+    //por ahi el usuario quiere agregar varias mascotas de una sola vez
+    if (Array.isArray(body)) {
+      // Si body es un array, creamos múltiples mascotas
+      const pets_created = await Pet.create(body);
+      return pets_created;
+    } else {
+      const pet_created = await Pet.create(body);
 
-    return pet_created;
+      return pet_created;
+    }
   } catch (error) {
     handlerError(error);
   }
