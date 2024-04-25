@@ -1,6 +1,6 @@
 "use client";
 
-import Home from "@/containers/home-container";
+import Landing from "@/components/Landing";
 
 import { useEffect } from "react";
 /*TODO: Esta es la 1era pagina que se ejecuta en el front
@@ -14,7 +14,7 @@ import { useEffect } from "react";
 export default function App() {
   return (
     <>
-      <Home />
+      <Landing />
     </>
   );
 }
