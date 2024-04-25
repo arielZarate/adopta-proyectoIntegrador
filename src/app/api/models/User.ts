@@ -24,17 +24,25 @@ const SchemaUser = new Schema(
       min: [7, "the min digits is 7"],
     },
 
-    /// FIXME: el domicilio luego lo hare en un nuevo schema
-    address: {
-      street: {
-        type: String,
-        min: [1, "the  street must be the 1 character min"],
-        max: [30, "the  street must be the 30 character max"],
-      },
+    roles:
+      //array de roles definido
+      [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Role", //referencia al modelo Role
+        },
+      ],
 
-      number: {
-        type: Number,
-      },
+    /// FIXME: el domicilio luego lo hare en un nuevo schema
+    /**
+     address: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Address",
+    },
+
+   */
+    number: {
+      type: Number,
     },
 
     my_pets: [
