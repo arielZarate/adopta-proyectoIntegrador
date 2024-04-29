@@ -13,8 +13,15 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+
+      //aca podemos agregar colores personalizados 🙂
+      colors: {
+        "background-color": "#F0F0F0",
+        primary: "#FFB347",
+        secondary: "#CCCCCC",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 };
 export default config;

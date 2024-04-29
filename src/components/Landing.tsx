@@ -1,8 +1,10 @@
 import React from "react";
-import imageLanding from "../../public/image_hero.png";
+import imageLanding from "@/public/assets/landing.png";
+import logo from "@/public/assets/logo.png";
 
-import { FaBone } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
+
 function Landing() {
   const backgroundStyle = {
     backgroundImage: `url(${imageLanding.src})`,
@@ -15,25 +17,24 @@ function Landing() {
         className=" min-h-screen min-w-full bg-cover  "
         style={backgroundStyle}
       >
-        <header className=" bg-black/70 h-10  w-full flex items-center mx-auto">
+        <header className=" bg-slate-900/70 h-14  w-full flex items-center mx-auto">
           <nav className="flex justify-between w-full">
             {/* Coloca el Link directamente dentro del nav */}
             <Link href="/home" legacyBehavior>
-              {/* Aplica estilos al botón directamente */}
-              <a
-                className="flex items-center px-4"
-                style={{ color: "#E07716" }}
-              >
-                <FaBone size={20} />
-                <span className="ml-1 font-bold">Mascotas</span>
-              </a>
+              <Image
+                src={logo}
+                alt="logo"
+                width={40}
+                height={40}
+                className="object-contain img"
+              />
             </Link>
 
-            <ul className="flex items-center justify-center text-white text-xs  font-bold gap-2 mr-2">
-              <li className="hover:text-cyan-700">
+            <ul className="flex items-center justify-center text-slate-200 text-md font-bold gap-2 mr-2 ">
+              <li className="  hover:text-primary">
                 <Link href={"/about"}>Nuestra mision</Link>
               </li>
-              <li>
+              <li className=" hover:text-primary">
                 <Link href={"#"}>Registro</Link>
               </li>
             </ul>
@@ -57,7 +58,7 @@ function Landing() {
             </p>
 
             <Link href="/home">
-              <button className="border-2 border-slate-300 rounded-full w-30 p-1 text-white hover:cursor-pointer hover:bg-slate-950 hover:font-bold">
+              <button className="border-2 border-slate-300 rounded-full w-30 p-1 text-white hover:cursor-pointer   hover:bg-secondary hover:text-black  hover:font-bold transition ease-in-out delay-150 duration-200 hover:-translate-y-1 ">
                 ver mascotas
               </button>
             </Link>

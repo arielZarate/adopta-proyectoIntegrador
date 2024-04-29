@@ -3,7 +3,7 @@ import React from "react";
 const About = () => {
   return (
     <div className="h-screen  my-10 mx-10">
-      <div className="rounded-lg  p-6 border-2 flex flex-col items-center  bg-zinc-100 ">
+      <div className="rounded-lg  p-6 border-2 flex flex-col items-center  bg-white shadow-lg ">
         <h2 className="text-2xl font-bold mb-4">Nuestra Misión</h2>
         <p className="text-md mb-4">
           En Mascotas, nos apasiona facilitar el proceso de adopción de mascotas
