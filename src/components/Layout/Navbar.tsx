@@ -8,11 +8,16 @@ import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { MdDarkMode } from "react-icons/md";
 import avatar from "@/public/assets/avatar2.jpg";
 
+/////////////////////////////////////////
+
+import { Color } from "@/interfaces/IColor";
+//////////////////////////////////////////
+
 function NavBar() {
   //==============etates==========
   const [open, setOpen] = useState(false);
-  const [color, setColor] = useState("#0f172a");
-  const [textColor, setTextColor] = useState("#ffffff");
+  const [color, setColor] = useState<Color>("#0f172a");
+  const [textColor, setTextColor] = useState<Color>("#FFFFFF");
   const [darkMode, setDarkMode] = useState(false);
   //handlers
   const handleOpen = () => {
@@ -23,15 +28,20 @@ function NavBar() {
 
   useEffect(() => {
     const changeColor = () => {
-      if (window.scrollY >= 200) {
-        setColor("rgba(15, 23, 42, 0.7)");
-        setTextColor("#fffff");
+      if (window.scrollY >= 100) {
+        //rgba(15, 23, 42, 0.7)
+        //#FFFFFF
+        setColor("#FFFFFF");
+        setTextColor("#000000");
       } else {
         setColor("#0f172a");
-        setTextColor("#ffffff");
+        setTextColor("#FFFFFF");
       }
     };
     window.addEventListener("scroll", changeColor);
+    return () => {
+      window.removeEventListener("scroll", changeColor);
+    };
   }, []);
 
   const toggleDarkMode = () => {
@@ -51,8 +61,8 @@ function NavBar() {
           <Image
             src={logo}
             alt="logo"
-            width={40}
-            height={40}
+            width={45}
+            height={45}
             className="object-contain img"
           />
           {/*  <h3
@@ -65,7 +75,7 @@ function NavBar() {
          */}
         </Link>
 
-        <SearchBar props={{ color, textColor }} />
+        <SearchBar color={textColor} />
 
         <ul
           style={{ color: `${textColor}` }}
@@ -106,7 +116,7 @@ function NavBar() {
                 className=" avatar"
               >
                 <div className="rounded-full">
-                  <Image alt="avatar" src={avatar} width={30} height={30} />
+                  <Image alt="avatar" src={avatar} width={35} height={35} />
                 </div>
               </div>
               <ul
@@ -162,7 +172,7 @@ function NavBar() {
         >
           <ul className="">
             <li>
-              <Link href="/" className="p-4">
+              <Link href="/" className="p-4 text-4xl  hover:text-gray-500">
                 Inicio
               </Link>
             </li>

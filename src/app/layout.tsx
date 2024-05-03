@@ -28,7 +28,9 @@ export default function RootLayout({
       lang="es"
       className=" text-slate-900 bg-background-color h-screen w-full m-0 p-0"
     >
-      <body className={roboto.className}>{children}</body>
+      <body className={roboto.className}>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }

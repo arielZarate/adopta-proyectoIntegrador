@@ -1,32 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import HomeContainer from "@/containers/HomeContainer";
 
-import ListPets from "@/components/ListPets";
-import NavBar from "@/components/header/Navbar";
-import Footer from "@/components/Footer";
-const HomeContainer = () => {
-  //TODO: esta es la pagina principal donde yo tengo la estructura principal
+import NavBar from "@/components/Layout/Navbar";
+import Footer from "@/components/Layout/Footer";
+type Props = {};
+
+export default function HomePage({}: Props) {
   return (
     <>
       <div className="min-h-screen flex flex-col">
-        {/* Encabezado */}
-        <header>
-          <NavBar />
-        </header>
-
+        <NavBar />
         {/* Contenido principal */}
-        <main className="min-h-screen overflow-y-auto ">
-          {/* Aquí establecemos una altura mínima y permitimos el desplazamiento vertical */}
-
-          <ListPets />
-        </main>
-
-        {/* Pie de página */}
-        <footer className="mt-10">
-          <Footer />
-        </footer>
+        <HomeContainer />
+        <Footer />
       </div>
     </>
   );
-};
-
-export default HomeContainer;
+}
