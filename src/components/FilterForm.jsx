@@ -130,16 +130,6 @@ const FilterForm = () => {
         </select>
       </div>
 
-      {/**
-           <label>Tamaño:</label>
-      <select name="size" onChange={handleChange}>
-        <option value="">Cualquier Tamaño</option>
-        <option value="small">Pequeño</option>
-        <option value="medium">Mediano</option>
-        <option value="large">Grande</option>
-      </select>
-
-       */}
       <div className="my-2">
         <label className="text-xl font-bold ">Tamaño de la mascota</label>
         <div className="flex flex-col gap-1 items-start text-lg">
