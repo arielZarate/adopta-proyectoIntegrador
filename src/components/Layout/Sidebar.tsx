@@ -1,17 +1,18 @@
 import React from "react";
-
+import SearchBar from "./SearchBar";
+import FilterForm from "../FilterForm";
 type Props = {};
 
 export default function Sidebar() {
   return (
-    <div className="flex flex-col justify-start">
-      <h3>sidebar</h3>
-      <ul className="">
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 4</li>
-        <li>Item 5</li>
+    <div className="flex flex-col items-start py-1">
+      <ul className=" text-sm tex-bold text-slate-500 flex flex-col gap-4">
+        <li>
+          <SearchBar />
+        </li>
+        <li>
+          <FilterForm />
+        </li>
       </ul>
     </div>
   );

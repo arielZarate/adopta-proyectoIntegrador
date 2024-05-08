@@ -27,7 +27,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/Landing.tsx",
-    "src/components/Layout/Navbar.jsx"
+    "src/components/Layout/Navbar.jsx",
+    "src/context/PetsContext.js",
+    "src/components/FilterForm.jsx"
   ],
   "exclude": ["node_modules"]
 }

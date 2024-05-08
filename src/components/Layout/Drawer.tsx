@@ -30,28 +30,28 @@ function DrawerContent() {
   //==========return===========
   return (
     <>
-      <div className="mx-auto container min-h-screen my-32">
+      <div className="container min-h-screen my-32 mx-auto">
         {/** div del grid principal*/}
-        <div className={`grid md:grid-cols-4   mx-auto `}>
+        <div className={`grid md:grid-cols-4 mx-1`}>
           {/*sidebar */}
 
-          <header className="mt-16">
+          <header className="mt-16 m-0">
             <div
               className={`
-          ${isMobile ? "fixed top-20 left-0 h-full z-50 w-96 " : "col-span-1"}
+          ${isMobile ? "fixed top-36 left-0 h-full z-50 w-96 " : "col-span-1"}
           ${drawer ? "md:block " : "hidden"}
-            bg-slate-100 md:w-64 min-h-full text-center font-bold text-2xl rounded-md
+            bg-slate-100 md:w-72 min-h-full text-center font-bold text-2xl rounded-md
              transition ease-in-out delay-150 duration-500
             `}
             >
-              <nav className={`min-h-full ml-0 `}>
+              <nav className={`min-h-full`}>
                 <Sidebar />
               </nav>
             </div>
 
             <button
               onClick={toggleDrawer}
-              className="text-black fixed top-24 left-10 z-50  border-2 border-primary rounded-full p-2"
+              className="text-black fixed top-24 left-10 z-50  border-2 border-primary rounded-full p-1"
             >
               {drawer ? (
                 <IoIosArrowBack size={30} className="" />
@@ -65,18 +65,15 @@ function DrawerContent() {
 
           <div
             className={`col-span-4
-            ${drawer ? "md:col-span-3 mx-auto" : ""}`}
+            ${drawer ? "md:col-span-3" : ""}`}
           >
             <div
-              className={`col-span-4 ${drawer ? "md:col-span-3 mx-auto" : ""} ${
+              className={`col-span-4 ${drawer ? "md:col-span-3 " : ""} ${
                 isMobile ? "backdrop-filter backdrop-blur-md" : ""
               }`}
             ></div>
-            <h3 className="text-center p-4 font-bold text-2xl text-black">
-              Mascotas
-            </h3>
 
-            <main>
+            <main className="my-10 p-4">
               <ListPets />
             </main>
           </div>

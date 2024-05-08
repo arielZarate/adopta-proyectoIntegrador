@@ -75,8 +75,6 @@ function NavBar() {
          */}
         </Link>
 
-        <SearchBar color={textColor} />
-
         <ul
           style={{ color: `${textColor}` }}
           className="hidden  sm:flex  items-center justify-center "
