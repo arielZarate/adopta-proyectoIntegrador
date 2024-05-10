@@ -1,5 +1,3 @@
-import { IPet, ArrayPets } from "@/interfaces/IPet";
-import Pet from "@/app/api/models/Pet";
 import { _get, _post } from "@/app/api/services/_Pet_service";
 import { handlerError } from "@/app/api/utils/HandlerError";
 
@@ -14,9 +12,7 @@ version 2 de como obtener el query de searchParams
   let query = searchParams.get("query");
  */
 
-export async function GET(req: Request) {
-  //TODO: asi obtengo la query de la url si existe query
-  //=========LA VERDAD LA COMPLICO ACA NEXT 🫠 (con express era req.search y nada mas)=================
+export async function GET(req: Request, res: Response) {
   let url = new URL(req.url);
   let urlSearchParams = url.searchParams;
   //TODO: search es el parametro que busca podria ser otro nombre tambien
@@ -45,7 +41,7 @@ export async function GET(req: Request) {
           status: 400,
         });
       }
-      console.log(petFound);
+      //console.log(petFound);
       return Response.json(petFound);
     }
 
