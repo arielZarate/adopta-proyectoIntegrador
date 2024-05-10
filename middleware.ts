@@ -1,71 +1,49 @@
-// Imports
-// ========================================================
-import { NextResponse, type NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-// Config
-// ========================================================
-const corsOptions: {
-  allowedMethods: string[];
-  allowedOrigins: string[];
-  allowedHeaders: string[];
-  exposedHeaders: string[];
-  maxAge?: number;
-  credentials: boolean;
-} = {
-  allowedMethods: (process.env?.ALLOWED_METHODS || "").split(","),
-  allowedOrigins: (process.env?.ALLOWED_ORIGIN || "").split(","),
-  allowedHeaders: (process.env?.ALLOWED_HEADERS || "").split(","),
-  exposedHeaders: (process.env?.EXPOSED_HEADERS || "").split(","),
-  maxAge: (process.env?.MAX_AGE && parseInt(process.env?.MAX_AGE)) || undefined, // 60 * 60 * 24 * 30, // 30 days
-  credentials: process.env?.CREDENTIALS == "true",
+const allowedOrigins = [
+  "adopta-proyecto-integrador-git-main-arielzarates-projects.vercel.app",
+  "adopta-proyecto-integrador-qxcalqk2t-arielzarates-projects.vercel.app",
+];
+
+const corsOptions = {
+  "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
-// Middleware
-// ========================================================
-// This function can be marked `async` if using `await` inside
-export async function middleware(request: NextRequest) {
-  // Response
+export function middleware(request: NextRequest) {
+  // Check the origin from the request
+  const origin = request.headers.get("origin") ?? "";
+  const isAllowedOrigin = allowedOrigins.includes(origin);
+
+  // Handle preflighted requests
+  const isPreflight = request.method === "OPTIONS";
+
+  if (isPreflight) {
+    const preflightHeaders = {
+      ...(isAllowedOrigin && { "Access-Control-Allow-Origin": origin }),
+      ...corsOptions,
+    };
+    return NextResponse.json({}, { headers: preflightHeaders });
+  }
+
+  // Handle simple requests
   const response = NextResponse.next();
 
-  // Allowed origins check
-  const origin = request.headers.get("origin") ?? "";
-  if (
-    corsOptions.allowedOrigins.includes("*") ||
-    corsOptions.allowedOrigins.includes(origin)
-  ) {
+  if (isAllowedOrigin) {
     response.headers.set("Access-Control-Allow-Origin", origin);
   }
 
-  // Set default CORS headers
-  response.headers.set(
-    "Access-Control-Allow-Credentials",
-    corsOptions.credentials.toString()
-  );
-  response.headers.set(
-    "Access-Control-Allow-Methods",
-    corsOptions.allowedMethods.join(",")
-  );
-  response.headers.set(
-    "Access-Control-Allow-Headers",
-    corsOptions.allowedHeaders.join(",")
-  );
-  response.headers.set(
-    "Access-Control-Expose-Headers",
-    corsOptions.exposedHeaders.join(",")
-  );
-  response.headers.set(
-    "Access-Control-Max-Age",
-    corsOptions.maxAge?.toString() ?? ""
-  );
+  Object.entries(corsOptions).forEach(([key, value]) => {
+    response.headers.set(key, value);
+  });
 
-  // Return
   return response;
 }
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher: "/api/:path*",
 };
 
 //FUENTE DE LA INFORMACION
 //https://codingwithmanny.medium.com/3-ways-to-configure-cors-for-nextjs-13-app-router-api-route-handlers-427e10929818
+//https://nextjs.org/docs/app/building-your-application/routing/middleware#cors
