@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const allowedOrigins = [
+  "http://localhost:3000",
   "adopta-proyecto-integrador-git-main-arielzarates-projects.vercel.app",
   "adopta-proyecto-integrador-qxcalqk2t-arielzarates-projects.vercel.app",
 ];
