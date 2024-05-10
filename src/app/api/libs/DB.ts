@@ -11,8 +11,10 @@ export default async function DB() {
       return db;
     }
 
-    db = await mongoose.connect(`${process.env.DB_URI}`);
-    console.log("========== DB mongodb  linstening ⚡ ⚡============");
+    db = await mongoose.connect(`${process.env.DB_URI_ATLAS}`, {
+      autoIndex: true,
+    });
+    console.log("========== Conectado a Mongodb Atlas 💥💥 ============");
 
     // Inicializa el modelo Role si aún no existe
 
