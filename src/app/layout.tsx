@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Roboto, Jomhuria } from "next/font/google";
+import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
-import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({
@@ -30,11 +29,6 @@ export const metadata: Metadata = {
     ],
   },*/
 };
-
-export const jomhuria = Jomhuria({
-  subsets: ["latin"],
-  weight: "400",
-});
 
 export default function RootLayout({
   children,

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { jomhuria } from "@/app/layout";
+
 import perroConfundido from "@/public/assets/perroConfundido.png";
 import { TbBackground } from "react-icons/tb";
 
@@ -19,10 +19,7 @@ export default function Error404() {
 
       <div className="text-center">
         <h1 className="text-6xl font-bold mb-4">404</h1>
-        <p
-          style={{ fontSize: "47px" }}
-          className={`${jomhuria.className} text-2xl mb-8`}
-        >
+        <p style={{ fontSize: "47px" }} className={` text-2xl mb-8`}>
           Página no encontrada
         </p>
         <a
