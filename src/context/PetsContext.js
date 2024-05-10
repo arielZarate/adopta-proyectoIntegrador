@@ -11,6 +11,7 @@ export default function PetsProvider({ children }) {
     status: "",
     species: "",
     size: "",
+    gender: "",
     breed: "",
   });
 
@@ -20,11 +21,16 @@ export default function PetsProvider({ children }) {
     return listPets.filter((pet) => {
       if (filterOptions.status && pet.status !== filterOptions.status)
         return false;
+      ///////////
       if (filterOptions.gender && pet.gender !== filterOptions.gender)
         return false;
-      // Agrega más lógica de filtro según sea necesario
-
+      //////////
+      if (filterOptions.size && pet.size !== filterOptions.size) return false;
+      //////////////
       if (filterOptions.species && pet.species !== filterOptions.species)
+        return false;
+      //////////////
+      if (filterOptions.breed && pet.breed !== filterOptions.breed)
         return false;
 
       return true;

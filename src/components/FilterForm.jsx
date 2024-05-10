@@ -6,7 +6,7 @@ import React, { useState } from "react";
 const FilterForm = () => {
   const { filterOptions, setFilterOptions } = ContextPet();
 
-  const handleRadioChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
 
     setFilterOptions((prevState) => ({
@@ -15,19 +15,13 @@ const FilterForm = () => {
     }));
   };
 
-  /*
-  const handleSelectChange = (e) => {
-    const { name, value } = e.target;
-    setFilterOptions({ ...filterOptions, [name]: value });
-  };
-*/
-
   const handleResetFilters = () => {
     // Aplicar los filtros vacíos para mostrar todos los resultados
     setFilterOptions({
       status: "",
       species: "",
       size: "",
+      gender: "",
       breed: "",
     });
   };
@@ -72,6 +66,8 @@ const FilterForm = () => {
     "Brittany",
     "Havanese",
     "Weimaraner",
+    "Pastor Aleman",
+    "Pitbull",
     // Razas de gatos
     "Persian",
     "Maine Coon",
@@ -93,6 +89,8 @@ const FilterForm = () => {
     "Siberian",
     "Cornish Rex",
     "Tonkinese",
+    "Persa",
+    "Siamese",
   ];
 
   return (
@@ -108,7 +106,7 @@ const FilterForm = () => {
               name="status"
               value="adoption"
               checked={filterOptions.status === "adoption"}
-              onChange={handleRadioChange}
+              onChange={handleChange}
             />
             En Adopcion
           </label>
@@ -118,7 +116,7 @@ const FilterForm = () => {
               name="status"
               value="found"
               checked={filterOptions.status === "found"}
-              onChange={handleRadioChange}
+              onChange={handleChange}
             />
             Encontrado
           </label>
@@ -128,7 +126,7 @@ const FilterForm = () => {
               name="status"
               value="lost"
               checked={filterOptions.status === "lost"}
-              onChange={handleRadioChange}
+              onChange={handleChange}
             />
             Perdido
           </label>
@@ -146,7 +144,7 @@ const FilterForm = () => {
               name="species"
               value="cat"
               checked={filterOptions.species === "cat"}
-              onChange={handleRadioChange}
+              onChange={handleChange}
             />
             Gato
           </label>
@@ -156,15 +154,13 @@ const FilterForm = () => {
               name="species"
               value="dog"
               checked={filterOptions.species === "dog"}
-              onChange={handleRadioChange}
+              onChange={handleChange}
             />
             Perro
           </label>
         </div>
       </div>
 
-      {/*
-    
       <div className="my-1">
         <label className="font-bold mb-1  flex items-start  text-slate-700">
           Tamaño
@@ -173,27 +169,30 @@ const FilterForm = () => {
           <label>
             <input
               type="radio"
-              name="sizepet"
-              value="small"
-              onChange={handleAdoptionStatusChange}
+              name="size"
+              value="little"
+              onChange={handleChange}
+              checked={filterOptions.size === "little"}
             />
             Pequeño
           </label>
           <label>
             <input
               type="radio"
-              name="sizepet"
+              name="size"
               value="medium"
-              onChange={handleAdoptionStatusChange}
+              onChange={handleChange}
+              checked={filterOptions.size === "medium"}
             />
             Mediano
           </label>
           <label className="">
             <input
               type="radio"
-              name="sizepet"
+              name="size"
               value="big"
-              onChange={handleAdoptionStatusChange}
+              onChange={handleChange}
+              checked={filterOptions.size === "big"}
             />
             Grande
           </label>
@@ -210,7 +209,8 @@ const FilterForm = () => {
               type="radio"
               name="gender"
               value="female"
-              onChange={handleAdoptionStatusChange}
+              onChange={handleChange}
+              checked={filterOptions.gender === "female"}
             />
             Hembra
           </label>
@@ -219,44 +219,36 @@ const FilterForm = () => {
               type="radio"
               name="gender"
               value="male"
-              onChange={handleAdoptionStatusChange}
+              onChange={handleChange}
+              checked={filterOptions.gender === "male"}
             />
             Macho
           </label>
         </div>
       </div>
+
       <div className=" ">
-        <label>Raza:</label> 
         <select
           name="breed"
           onChange={handleChange}
+          value={filterOptions.breed}
           className="input input-bordered  border-3 border-indigo-300 rounded-lg w-auto md:w-52 text-sm"
         >
           <option value="" className="text-base">
             Raza de animal
           </option>
-          {breedOptions.map((breed, index) => (
+          {breedOptions.sort().map((breed, index) => (
             <option key={index} value={breed}>
               {breed}
             </option>
           ))}
         </select>
       </div>
-    */}
 
-      <div className="flex gap-1">
-        {/*
-        <button
-          type="submit"
-          className="my-2 p-2 bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-sm rounded-lg w-22"
-        >
-          Aplicar Filtros
-        </button>
-      */}
-
+      <div className="">
         <button
           type="button"
-          className="my-2 p-2 bg-slate-500 hover:bg-slate-600 text-white font-bold text-sm rounded-lg w-22"
+          className="my-2 p-2 bg-slate-500 hover:bg-slate-600 text-white font-bold text-sm rounded-lg w-52"
           onClick={handleResetFilters}
         >
           Borrar Filtros

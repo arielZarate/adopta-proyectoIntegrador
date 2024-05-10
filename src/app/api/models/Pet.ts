@@ -54,7 +54,7 @@ const SchemaPet = new Schema(
       required: [true, "the age is required"],
       enum: ["puppy", "adult", "senior"],
     },
-    height: {
+    size: {
       type: String,
       required: [true, "the height pet is required verify"],
       enum: ["little", "medium", "big"], // Solo permite pequeño mediano y grande

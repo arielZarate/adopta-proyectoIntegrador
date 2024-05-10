@@ -27,13 +27,14 @@ const Card: React.FC<Props> = ({ pet }) => {
             Me llamo <span className="font-bold text-base"> {pet.name}</span>
           </h3>
 
-          <div className="flex justify-between text-sm ">
+          <div className="flex flex-col text-sm ">
             <div className="">
-              <span className="p-1 text-green-700 font-bold">{pet.status}</span>
+              <span className=" text-green-700 font-bold">{pet.status}</span>
             </div>
-
+            <div className="text-gray-900 font-semibold">{pet.size}</div>
             <div className="text-gray-900 font-semibold">{pet.species}</div>
             <div className="text-gray-900 font-semibold">{pet.gender}</div>
+            <div className="text-gray-900 font-semibold">{pet.breed}</div>
           </div>
           {/* <p className="text-sm font-normal text-gray-900">{pet.description}</p> */}
 

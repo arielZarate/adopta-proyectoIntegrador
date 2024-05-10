@@ -9,7 +9,7 @@ export interface IPet {
   gender: string;
   color: string;
   age: string;
-  height: string;
+  size: string;
   image: { url: string };
   description: string;
 }
