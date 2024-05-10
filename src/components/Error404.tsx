@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import perroConfundido from "@/public/assets/perroConfundido.png";
-import { TbBackground } from "react-icons/tb";
 
 export default function Error404() {
   return (
