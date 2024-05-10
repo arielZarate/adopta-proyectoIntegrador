@@ -1,0 +1,142 @@
+[
+  {
+    "name": "Max",
+    "status": "adoption",
+    "species": "dog",
+    "breed": "Labrador Retriever",
+    "gender": "male",
+    "color": "Dorado",
+    "age": "adult",
+    "height": "big",
+    "image": {
+      "url": "https://www.superpet.pe/blog/wp-content/uploads/2021/08/Golden-Retriever-La-gui%CC%81a-completa-de-esta-raza-1-750x450.jpg"
+    },
+    "description": "Max is a friendly and energetic dog, he is looking for a home where he can receive lots of love and attention. He is available for adoption!"
+  },
+  {
+    "name": "Luna",
+    "status": "adoption",
+    "species": "cat",
+    "breed": "Siamese",
+    "gender": "female",
+    "color": "Punto de Foca",
+    "age": "adult",
+    "height": "medium",
+    "image": {
+      "url": "https://lagatera.org/wp-content/uploads/2016/03/13265843_786296648136460_6381427199718858550_n.jpg"
+    },
+    "description": "Luna is a loving and playful cat who will light up your home with her presence. She is looking for a human companion to provide her with love and fun!"
+  },
+  {
+    "name": "Rocky",
+    "status": "found",
+    "species": "dog",
+    "breed": "Pastor Alemán",
+    "gender": "male",
+    "color": "Negro y Fuego",
+    "age": "adult",
+    "height": "big",
+    "image": {
+      "url": "https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/german-shepherd-dog-breed-info.jpeg"
+    },
+    "description": "Rocky is an intelligent and loyal dog who has been found and is waiting for his owner to pick him up. Help us reunite him with his family!"
+  },
+  {
+    "name": "Bella",
+    "status": "found",
+    "species": "cat",
+    "breed": "Persa",
+    "gender": "female",
+    "color": "Blanco",
+    "age": "senior",
+    "height": "medium",
+    "image": {
+      "url": "https://cdn.wamiz.fr/cdn-cgi/image/format=auto,quality=80,width=1200,height=900,fit=cover/article/main-picture/60479ae773a23365656927.jpg"
+    },
+    "description": "Bella is a graceful and independent cat who loves quiet moments in the company of her human. Come meet her and fall in love with her charm!"
+  },
+  {
+    "name": "Buddy",
+    "status": "adoption",
+    "species": "dog",
+    "breed": "Golden Retriever",
+    "gender": "male",
+    "color": "Crema",
+    "age": "puppy",
+    "height": "big",
+    "image": {
+      "url": "https://pics.craiyon.com/2023-08-03/7f68231f550f4c17b4fd1b35c1abacae.webp"
+    },
+    "description": "Buddy is a loyal and gentle dog who is looking for a home where he can be part of the family. He is available for adoption and ready to share his love with you!"
+  },
+  {
+    "name": "Milo",
+    "status": "found",
+    "species": "cat",
+    "breed": "Maine Coon",
+    "gender": "male",
+    "color": "Atigrado",
+    "age": "adult",
+    "height": "medium",
+    "image": {
+      "url": "https://www.purina.es/sites/default/files/2021-02/CAT%20HERO_0012_Maine_coon.jpg"
+    },
+    "description": "Milo is a playful and curious cat who is always exploring his surroundings with great energy. Come meet him and discover the fun of having Milo as a companion!"
+  },
+  {
+    "name": "Lola",
+    "status": "lost",
+    "species": "dog",
+    "breed": "Chihuahua",
+    "gender": "female",
+    "color": "Marrón",
+    "age": "puppy",
+    "height": "little",
+    "image": {
+      "url": "https://hips.hearstapps.com/hmg-prod/images/gettyimages-1153402505-647db2e2c9bb1.jpg"
+    },
+    "description": "Lola is a small and affectionate Chihuahua. Unfortunately, she has gone missing and we are desperately searching for her whereabouts. If you have seen her, please contact us."
+  },
+  {
+    "name": "Simba",
+    "status": "lost",
+    "species": "cat",
+    "breed": "Siamés",
+    "gender": "male",
+    "color": "Blanco y marrón",
+    "age": "adult",
+    "height": "medium",
+    "image": {
+      "url": "https://i.pinimg.com/736x/9c/a7/86/9ca786b82eff67d1f1f195a59901eb30.jpg"
+    },
+    "description": "Simba is a charming and energetic Siamese cat. He is looking for a loving home where he can play and relax. Adopt him and you'll have a loyal companion for life!"
+  },
+  {
+    "name": "Thor",
+    "status": "adoption",
+    "species": "dog",
+    "breed": "Pitbull",
+    "gender": "male",
+    "color": "Atigrado",
+    "age": "puppy",
+    "height": "big",
+    "image": {
+      "url": "https://previews.123rf.com/images/maryswift/maryswift1809/maryswift180900056/112068382-un-atigrado-pit-bull-terrier-perro-de-raza-mixta-con-una-expresi%C3%B3n-feliz-de-pie-al-aire-libre.jpg"
+    },
+    "description": "Thor is a loving and protective pitbull who is looking for a home where he can feel safe and loved. If you're looking for a brave and loyal companion, Thor is the one for you!"
+  },
+  {
+    "name": "Coco",
+    "status": "adoption",
+    "species": "cat",
+    "breed": "British Shorthair",
+    "gender": "female",
+    "color": "Azul",
+    "age": "adult",
+    "height": "medium",
+    "image": {
+      "url": "https://i0.wp.com/smylepets.com/wp-content/uploads/2021/04/british-gato.jpg?w=1170&ssl=1"
+    },
+    "description": "Coco is a calm and affectionate British Shorthair cat who loves cuddles and sunbathing. If you want to enjoy the company of a sweet and relaxed cat, Coco is perfect for you!"
+  }
+]

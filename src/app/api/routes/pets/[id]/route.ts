@@ -1,5 +1,5 @@
 import Pet from "@/app/api/models/Pet";
-import { handlerError } from "@/app/api/helpers/HandlerError";
+import { handlerError } from "@/app/api/utils/HandlerError";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { _delete, _getById, _update } from "@/app/api/services/_Pet_service";
 // TODO: metodo que devuleve mascotas por id

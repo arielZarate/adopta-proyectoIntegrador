@@ -6,7 +6,7 @@ type Props = {};
 
 export default function Footer({}: Props) {
   return (
-    <footer className="footer footer-center p-10 text-base-content bg-slate-100 max-h-52 max-w-full">
+    <footer className="footer footer-center p-10 text-base-content bg-white max-h-52 max-w-full">
       <nav className="grid md:grid-flow-col grid-flow-col-1 gap-4">
         <Link href={"/about"} className="link link-hover">
           Nosotros

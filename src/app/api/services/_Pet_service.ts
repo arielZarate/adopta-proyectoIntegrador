@@ -2,7 +2,7 @@ import DB from "@/app/api/libs/DB";
 import mongoose from "mongoose";
 import Pet from "@/app/api/models/Pet";
 import { IPet } from "@/interfaces/IPet";
-import { handlerError } from "@/app/api/helpers/HandlerError";
+import { handlerError } from "@/app/api/utils/HandlerError";
 /**
  TODO: =======SERVICES PETS========
  modelo

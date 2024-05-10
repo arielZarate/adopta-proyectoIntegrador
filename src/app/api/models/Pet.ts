@@ -22,6 +22,12 @@ const SchemaPet = new Schema(
       min: [2, "the min character is 2 and max 30"],
       max: [20, "the max character is 20"],
     },
+
+    status: {
+      type: String,
+      required: [true, "the status is required"],
+      enum: ["adoption", "found", "lost"], // Only allows 'adoption', 'found', or 'lost'
+    },
     species: {
       type: String,
       required: [true, "the species is required , dog or cat"],
@@ -44,8 +50,9 @@ const SchemaPet = new Schema(
     },
 
     age: {
-      type: Number,
-      //required: [true, "the age is required"],
+      type: String,
+      required: [true, "the age is required"],
+      enum: ["puppy", "adult", "senior"],
     },
     height: {
       type: String,

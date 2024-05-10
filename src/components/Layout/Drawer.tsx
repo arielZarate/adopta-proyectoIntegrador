@@ -40,7 +40,7 @@ function DrawerContent() {
               className={`
           ${isMobile ? "fixed top-36 left-0 h-full z-50 w-96 " : "col-span-1"}
           ${drawer ? "md:block " : "hidden"}
-            bg-slate-100 md:w-72 min-h-full text-center font-bold text-2xl rounded-md
+            bg-background-color md:w-64 min-h-full text-center font-bold text-2xl rounded-md
              transition ease-in-out delay-150 duration-500
             `}
             >

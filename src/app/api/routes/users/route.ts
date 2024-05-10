@@ -1,6 +1,6 @@
 import User from "@/app/api/models/User";
 import { _get, _post } from "@/app/api/services/_User_service";
-import { handlerError } from "@/app/api/helpers/HandlerError";
+import { handlerError } from "@/app/api/utils/HandlerError";
 
 //======================================
 //TODO: este metodo get devuelve una lista de mascotas o una mascota por nombre (query)

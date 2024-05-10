@@ -1,28 +1,44 @@
+import { ContextPet } from "@/context/PetsContext";
 import React, { useState } from "react";
 
 //type Props = {};
 
 const FilterForm = () => {
-  const [filterOptions, setFilterOptions] = useState({
-    adoptionStatus: "",
-    species: "",
-    size: "",
-    breed: "",
-  });
+  const { filterOptions, setFilterOptions } = ContextPet();
 
-  const handleAdoptionStatusChange = (e) => {
-    setFilterOptions({ ...filterOptions, adoptionStatus: e.target.value });
+  const handleRadioChange = (e) => {
+    const { name, value } = e.target;
+
+    setFilterOptions((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
-  const handleChange = (e) => {
+  /*
+  const handleSelectChange = (e) => {
     const { name, value } = e.target;
     setFilterOptions({ ...filterOptions, [name]: value });
   };
+*/
 
+  const handleResetFilters = () => {
+    // Aplicar los filtros vacíos para mostrar todos los resultados
+    setFilterOptions({
+      status: "",
+      species: "",
+      size: "",
+      breed: "",
+    });
+  };
+
+  /*
   const handleSubmit = (e) => {
     e.preventDefault();
-    onFilter(filterOptions);
+    console.log(localFilterOptions);
+    setFilterOptions(localFilterOptions);
   };
+*/
 
   // Array de razas para perros y gatos
   const breedOptions = [
@@ -80,59 +96,80 @@ const FilterForm = () => {
   ];
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="flex flex-col items-start ml-7 gap-1"
-    >
+    <form className="flex flex-col items-start ml-7 gap-1 text-sm">
       <div className="">
-        <label className="text-xl font-bold ">Estado de la mascota</label>
-        <div className="flex flex-col gap-1 items-start text-lg">
+        <label className=" font-bold mb-1 flex items-start text-slate-700">
+          Estado
+        </label>
+        <div className="flex flex-col gap-1 items-start ">
           <label>
             <input
               type="radio"
-              name="adoptionStatus"
-              value="adopt"
-              onChange={handleAdoptionStatusChange}
+              name="status"
+              value="adoption"
+              checked={filterOptions.status === "adoption"}
+              onChange={handleRadioChange}
             />
-            Para Adoptar
+            En Adopcion
           </label>
           <label>
             <input
               type="radio"
-              name="adoptionStatus"
+              name="status"
               value="found"
-              onChange={handleAdoptionStatusChange}
+              checked={filterOptions.status === "found"}
+              onChange={handleRadioChange}
             />
-            Encontrados
+            Encontrado
           </label>
           <label>
             <input
               type="radio"
-              name="adoptionStatus"
+              name="status"
               value="lost"
-              onChange={handleAdoptionStatusChange}
+              checked={filterOptions.status === "lost"}
+              onChange={handleRadioChange}
             />
-            Perdidos
+            Perdido
           </label>
         </div>
       </div>
 
-      <div className="text-lg py-2">
-        {/** <label className="text-xl font-bold">Tipo de animal</label> */}
-        <select
-          name="species"
-          onChange={handleChange}
-          className="input input-bordered  border-4 border-indigo-300 rounded-lg w-auto md:w-56"
-        >
-          <option value=""> Tipo de animal</option>
-          <option value="dog">Perro</option>
-          <option value="cat">Gato</option>
-        </select>
+      <div className=" py-2">
+        <label className=" font-bold mb-1 flex items-start  text-slate-700">
+          Animal
+        </label>
+        <div className="flex gap-5 text-sm">
+          <label>
+            <input
+              type="radio"
+              name="species"
+              value="cat"
+              checked={filterOptions.species === "cat"}
+              onChange={handleRadioChange}
+            />
+            Gato
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="species"
+              value="dog"
+              checked={filterOptions.species === "dog"}
+              onChange={handleRadioChange}
+            />
+            Perro
+          </label>
+        </div>
       </div>
 
-      <div className="my-2">
-        <label className="text-xl font-bold ">Tamaño de la mascota</label>
-        <div className="flex flex-col gap-1 items-start text-lg">
+      {/*
+    
+      <div className="my-1">
+        <label className="font-bold mb-1  flex items-start  text-slate-700">
+          Tamaño
+        </label>
+        <div className="flex flex-col gap-1 items-start ">
           <label>
             <input
               type="radio"
@@ -151,7 +188,7 @@ const FilterForm = () => {
             />
             Mediano
           </label>
-          <label>
+          <label className="">
             <input
               type="radio"
               name="sizepet"
@@ -163,14 +200,41 @@ const FilterForm = () => {
         </div>
       </div>
 
-      <div className="my-2 py-3 text-lg">
-        {/**  <label>Raza:</label> */}
+      <div className="my-2 ">
+        <label className="font-bold flex items-start mb-1 text-slate-700">
+          Genero
+        </label>
+        <div className="flex gap-5 text-sm">
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              onChange={handleAdoptionStatusChange}
+            />
+            Hembra
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              onChange={handleAdoptionStatusChange}
+            />
+            Macho
+          </label>
+        </div>
+      </div>
+      <div className=" ">
+        <label>Raza:</label> 
         <select
           name="breed"
           onChange={handleChange}
-          className="input input-bordered  border-4 border-indigo-300 rounded-lg w-auto md:w-56"
+          className="input input-bordered  border-3 border-indigo-300 rounded-lg w-auto md:w-52 text-sm"
         >
-          <option value="">Raza de animal</option>
+          <option value="" className="text-base">
+            Raza de animal
+          </option>
           {breedOptions.map((breed, index) => (
             <option key={index} value={breed}>
               {breed}
@@ -178,13 +242,26 @@ const FilterForm = () => {
           ))}
         </select>
       </div>
+    */}
 
-      <button
-        type="submit"
-        className="my-2 p-3 bg-indigo-500 hover:bg-indigo-800 text-white font-bold text-lg rounded-lg w-56"
-      >
-        Aplicar Filtros
-      </button>
+      <div className="flex gap-1">
+        {/*
+        <button
+          type="submit"
+          className="my-2 p-2 bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-sm rounded-lg w-22"
+        >
+          Aplicar Filtros
+        </button>
+      */}
+
+        <button
+          type="button"
+          className="my-2 p-2 bg-slate-500 hover:bg-slate-600 text-white font-bold text-sm rounded-lg w-22"
+          onClick={handleResetFilters}
+        >
+          Borrar Filtros
+        </button>
+      </div>
     </form>
   );
 };

@@ -1,7 +1,7 @@
 import { IPet, ArrayPets } from "@/interfaces/IPet";
 import Pet from "@/app/api/models/Pet";
 import { _get, _post } from "@/app/api/services/_Pet_service";
-import { handlerError } from "@/app/api/helpers/HandlerError";
+import { handlerError } from "@/app/api/utils/HandlerError";
 
 //======================================
 //TODO: este metodo get devuelve una lista de mascotas o una mascota por nombre (query)
@@ -61,6 +61,7 @@ export const POST = async (req: Request) => {
   /**
    *   const {
     name,
+    status
     species,
     breed,
     gender,

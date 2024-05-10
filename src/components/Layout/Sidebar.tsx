@@ -5,7 +5,7 @@ type Props = {};
 
 export default function Sidebar() {
   return (
-    <div className="flex flex-col items-start py-1">
+    <div className="flex flex-col items-start py-5">
       <ul className=" text-sm tex-bold text-slate-500 flex flex-col gap-4">
         <li>
           <SearchBar />
