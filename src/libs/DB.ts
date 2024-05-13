@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import createRoles from "../utils/InitializeRole";
+import createRoles from "../app/api/utils/InitializeRole";
 //TODO: conexion a mongodb , puede usar mongo compas o atlas
 // recordar que mongo genera un id de tipo  ObjectId (objeto) => _id
 

@@ -1,4 +1,4 @@
-import DB from "@/app/api/libs/DB";
+import DB from "@/libs/DB";
 import User from "@/app/api/models/User";
 import { IUser } from "@/interfaces/IUser";
 import { handlerError } from "@/app/api/utils/HandlerError";
