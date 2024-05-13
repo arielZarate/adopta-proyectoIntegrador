@@ -1,5 +1,3 @@
-import NEXT_PUBLIC_URL_BASE from "@/utils/config";
-
 export const fetchBackendPets = async () => {
   /*
   if (!NEXT_PUBLIC_URL_BASE) {

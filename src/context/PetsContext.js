@@ -48,7 +48,7 @@ export default function PetsProvider({ children }) {
   }, [filterOptions]); // Este efecto se activa cada vez que cambian los filtros
   */
 
-  //este useEffect se carga al iniciar la application
+  //este useEffect se carga al iniciar la application trae todas las mascotas
   useEffect(() => {
     async function MontData() {
       let response = await fetchBackendPets();
