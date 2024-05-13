@@ -1,10 +1,19 @@
 import NEXT_PUBLIC_URL_BASE from "@/utils/config";
 
-console.log(process.env.NODE_ENV);
-//podria usar axios tambien en vez de fetch y configurar las urlbase
 export const fetchBackendPets = async () => {
-  const res = await fetch(`${NEXT_PUBLIC_URL_BASE}/api/routes/pets`);
-  let data = await res.json();
+  if (!NEXT_PUBLIC_URL_BASE) {
+    console.error(
+      "La variable de entorno NEXT_PUBLIC_URL_BASE no está definida."
+    );
+    return null; // Otra opción podría ser lanzar un error aquí.
+  }
 
-  return data;
+  try {
+    const res = await fetch(`${NEXT_PUBLIC_URL_BASE}/api/routes/pets`);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error al obtener datos de la API:", error);
+    return null; // O lanzar el error para manejarlo en el lugar donde se llama a esta función.
+  }
 };
