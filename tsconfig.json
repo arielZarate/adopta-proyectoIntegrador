@@ -30,8 +30,9 @@
     "src/components/Layout/Navbar.jsx",
     "src/context/PetsContext.js",
     "src/components/FilterForm.jsx",
-    "src/context/PetContext_version1.tsx",
-    "src/hooks/PetFiltertHook 2ts"
+    "src/context/PetContext_version1.txtNoBorrar",
+    "src/hooks/PetFiltertHook 2ts",
+    "src/hooks/PetFiltertHook_version1.txtNoBorrar"
   ],
   "exclude": ["node_modules"]
 }
