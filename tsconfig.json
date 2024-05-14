@@ -3,7 +3,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": true, //true
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -29,7 +29,9 @@
     "src/components/Landing.tsx",
     "src/components/Layout/Navbar.jsx",
     "src/context/PetsContext.js",
-    "src/components/FilterForm.jsx"
+    "src/components/FilterForm.jsx",
+    "src/context/PetContext_version1.tsx",
+    "src/hooks/PetFiltertHook 2ts"
   ],
   "exclude": ["node_modules"]
 }

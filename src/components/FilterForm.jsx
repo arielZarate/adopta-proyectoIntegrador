@@ -1,28 +1,29 @@
-import { ContextPet } from "@/context/PetsContext";
-import React, { useState } from "react";
-
+import { usePetFilterHook } from "@/hooks/PetFiltertHook";
+import React from "react";
+import { ActionTypes } from "@/interfaces/IAction.Types";
 //type Props = {};
 
 const FilterForm = () => {
-  const { filterOptions, setFilterOptions } = ContextPet();
+  const { filterOptions, setFilterOptions, handleResetFilters, dispatch } =
+    usePetFilterHook();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setFilterOptions((prevState) => ({
+    /**
+       esta forma se usaba con el PetFilterHook y el usecontextPet 
+     *    setFilterOptions((prevState) => ({
       ...prevState,
       [name]: value,
     }));
-  };
+     */
 
-  const handleResetFilters = () => {
-    // Aplicar los filtros vacíos para mostrar todos los resultados
-    setFilterOptions({
-      status: "",
-      species: "",
-      size: "",
-      gender: "",
-      breed: "",
+    //nueva forma con el useReducer
+    dispatch({
+      type: ActionTypes.SET_FILTER_OPTIONS,
+      payload: {
+        ...filterOptions, // Mantener las opciones de filtro actuales
+        [name]: value, // Actualizar solo la opción de filtro específica que se está modificando
+      },
     });
   };
 
@@ -95,11 +96,11 @@ const FilterForm = () => {
 
   return (
     <form className="flex flex-col items-start ml-7 gap-1 text-sm">
-      <div className="">
-        <label className=" font-bold mb-1 flex items-start text-slate-700">
+      <div className="bg-transparent">
+        <label className="font-bold mb-1 flex items-start text-slate-700">
           Estado
         </label>
-        <div className="flex flex-col gap-1 items-start ">
+        <div className="flex flex-col gap-1 items-start">
           <label>
             <input
               type="radio"
@@ -108,7 +109,7 @@ const FilterForm = () => {
               checked={filterOptions.status === "adoption"}
               onChange={handleChange}
             />
-            En Adopcion
+            <span className="ml-1">En Adopcion</span>
           </label>
           <label>
             <input
@@ -118,7 +119,7 @@ const FilterForm = () => {
               checked={filterOptions.status === "found"}
               onChange={handleChange}
             />
-            Encontrado
+            <span className="ml-1">Encontrado</span>
           </label>
           <label>
             <input
@@ -128,13 +129,13 @@ const FilterForm = () => {
               checked={filterOptions.status === "lost"}
               onChange={handleChange}
             />
-            Perdido
+            <span className="ml-1">Perdido</span>
           </label>
         </div>
       </div>
 
-      <div className=" py-2">
-        <label className=" font-bold mb-1 flex items-start  text-slate-700">
+      <div className="py-2 bg-transparent">
+        <label className="font-bold mb-1 flex items-start text-slate-700">
           Animal
         </label>
         <div className="flex gap-5 text-sm">
@@ -146,7 +147,7 @@ const FilterForm = () => {
               checked={filterOptions.species === "cat"}
               onChange={handleChange}
             />
-            Gato
+            <span className="ml-1">Gato</span>
           </label>
           <label>
             <input
@@ -156,52 +157,52 @@ const FilterForm = () => {
               checked={filterOptions.species === "dog"}
               onChange={handleChange}
             />
-            Perro
+            <span className="ml-1">Perro</span>
           </label>
         </div>
       </div>
 
-      <div className="my-1">
-        <label className="font-bold mb-1  flex items-start  text-slate-700">
+      <div className="my-1 bg-transparent">
+        <label className="font-bold mb-1 flex items-start text-slate-700">
           Tamaño
         </label>
-        <div className="flex flex-col gap-1 items-start ">
+        <div className="flex flex-col gap-1 items-start">
           <label>
             <input
               type="radio"
               name="size"
               value="little"
-              onChange={handleChange}
               checked={filterOptions.size === "little"}
+              onChange={handleChange}
             />
-            Pequeño
+            <span className="ml-1">Pequeño</span>
           </label>
           <label>
             <input
               type="radio"
               name="size"
               value="medium"
-              onChange={handleChange}
               checked={filterOptions.size === "medium"}
+              onChange={handleChange}
             />
-            Mediano
+            <span className="ml-1">Mediano</span>
           </label>
-          <label className="">
+          <label>
             <input
               type="radio"
               name="size"
               value="big"
-              onChange={handleChange}
               checked={filterOptions.size === "big"}
+              onChange={handleChange}
             />
-            Grande
+            <span className="ml-1">Grande</span>
           </label>
         </div>
       </div>
 
-      <div className="my-2 ">
+      <div className="my-2 bg-transparent">
         <label className="font-bold flex items-start mb-1 text-slate-700">
-          Genero
+          Género
         </label>
         <div className="flex gap-5 text-sm">
           <label>
@@ -209,34 +210,32 @@ const FilterForm = () => {
               type="radio"
               name="gender"
               value="female"
-              onChange={handleChange}
               checked={filterOptions.gender === "female"}
+              onChange={handleChange}
             />
-            Hembra
+            <span className="ml-1">Hembra</span>
           </label>
           <label>
             <input
               type="radio"
               name="gender"
               value="male"
-              onChange={handleChange}
               checked={filterOptions.gender === "male"}
+              onChange={handleChange}
             />
-            Macho
+            <span className="ml-1">Macho</span>
           </label>
         </div>
       </div>
 
-      <div className=" ">
+      <div className=" bg-transparent">
         <select
           name="breed"
           onChange={handleChange}
           value={filterOptions.breed}
-          className="input input-bordered  border-3 border-indigo-300 rounded-lg w-auto md:w-52 text-sm"
+          className="input input-bordered border-3 border-indigo-300 rounded-lg w-auto md:w-52 text-sm"
         >
-          <option value="" className="text-base">
-            Raza de animal
-          </option>
+          <option value="">Raza de animal</option>
           {breedOptions.sort().map((breed, index) => (
             <option key={index} value={breed}>
               {breed}

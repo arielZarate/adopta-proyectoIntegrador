@@ -6,7 +6,7 @@ type Props = {};
 
 export default function Footer({}: Props) {
   return (
-    <footer className="footer footer-center p-10 text-base-content bg-white max-h-52 max-w-full">
+    <footer className="footer footer-center p-10 text-base-content bg-white  h-full  md:max-h-60 max-w-full">
       <nav className="grid md:grid-flow-col grid-flow-col-1 gap-4">
         <Link href={"/about"} className="link link-hover">
           Nosotros
@@ -36,8 +36,21 @@ export default function Footer({}: Props) {
         </div>
       </nav>
       <aside>
-        <p className="font-bold mb-7">
+        <p className="font-bold mb-2">
           Copyright © 2024 - Todos los derechos reservados por mascotas.org
+        </p>
+
+        <p className="text-sm mb-7 font-normal font-sans">
+          created by developer FullStack{" "}
+          <span className=" ">
+            <Link
+              href={`https://github.com/arielZarate/arielZarate `}
+              className="text-cyan-700 hover:text-cyan-400 hover:underline "
+              target="_blank"
+            >
+              Ariel Zarate
+            </Link>
+          </span>
         </p>
       </aside>
     </footer>

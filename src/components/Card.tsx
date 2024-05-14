@@ -6,11 +6,6 @@ type Props = {
 
 //ota opcion seria const Card = ({ pet }:Props) => {
 const Card: React.FC<Props> = ({ pet }) => {
-  const [expanded, setExpanded] = React.useState(false);
-
-  const toggleDescription = () => {
-    setExpanded(!expanded);
-  };
   return (
     <div className="group relative">
       <div className="px-3 pt-3 border-2 border-secondary rounded-lg ">

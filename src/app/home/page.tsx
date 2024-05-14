@@ -2,7 +2,7 @@
 import HomeContainer from "@/containers/HomeContainer";
 import NavBar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
-import PetsProvider from "@/context/PetsContext";
+import PetProvider from "@/context/PetContext";
 
 type Props = {};
 
@@ -10,12 +10,12 @@ export default function HomePage({}: Props) {
   return (
     <>
       <div className="min-h-screen flex flex-col">
-        <PetsProvider>
+        <PetProvider>
           <NavBar />
           {/* Contenido principal */}
           <HomeContainer />
           <Footer />
-        </PetsProvider>
+        </PetProvider>
       </div>
     </>
   );

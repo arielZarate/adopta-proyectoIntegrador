@@ -21,6 +21,7 @@ const SchemaPet = new Schema(
       required: [true, "the name is required verify"],
       min: [2, "the min character is 2 and max 30"],
       max: [20, "the max character is 20"],
+      collation: { strength: 3 }, // Configuración para insensibilidad a mayúsculas y minúsculas
     },
 
     status: {

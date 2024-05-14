@@ -10,6 +10,7 @@ function DrawerContent() {
   //==============================================
   const [drawer, setDrawer] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   //==============funciones===============================
   const toggleDrawer = () => {
@@ -18,8 +19,9 @@ function DrawerContent() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-      if (window.innerWidth <= 768) {
+      //antes 768 es para probar
+      setIsMobile(window.innerWidth <= 780);
+      if (window.innerWidth <= 780) {
         setDrawer(false);
       }
     };
@@ -35,7 +37,7 @@ function DrawerContent() {
         <div className={`grid md:grid-cols-4 mx-1`}>
           {/*sidebar */}
 
-          <header className="mt-16 m-0">
+          <header className="mt-10 ">
             <div
               className={`
           ${isMobile ? "fixed top-36 left-0 h-full z-50 w-96 " : "col-span-1"}
@@ -73,7 +75,9 @@ function DrawerContent() {
               }`}
             ></div>
 
-            <main className="my-10 p-4">
+            <main
+              className={` ${drawer ? " md:mt-2" : "md:-mt-4"}    mb-10  p-4 `}
+            >
               <ListPets />
             </main>
           </div>

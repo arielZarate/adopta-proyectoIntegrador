@@ -3,7 +3,7 @@ import Image from "next/image";
 import logo from "@/public/assets/logo.png";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
-import SearchBar from "./SearchBar";
+
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { MdDarkMode } from "react-icons/md";
 import avatar from "@/public/assets/avatar2.jpg";
@@ -28,7 +28,7 @@ function NavBar() {
 
   useEffect(() => {
     const changeColor = () => {
-      if (window.scrollY >= 100) {
+      if (window.scrollY >= 240) {
         //rgba(15, 23, 42, 0.7)
         //#FFFFFF
         setColor("#FFFFFF");
