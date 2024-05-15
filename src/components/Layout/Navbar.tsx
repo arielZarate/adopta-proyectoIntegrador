@@ -159,7 +159,7 @@ function NavBar() {
               <AiOutlineClose size={27} color="#000000" className="" />
             ) : (
               <AiOutlineMenu
-                size={25}
+                size={30}
                 className={`p-1 rounded-full text-[${color}] border-2  border-[${color}] hover:border-2 hover:border-sky-500 `}
               />
             )}

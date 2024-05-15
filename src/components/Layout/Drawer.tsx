@@ -61,9 +61,9 @@ function DrawerContent() {
               style={{ zIndex: "1" }}
             >
               {openDrawer ? (
-                <IoIosArrowBack size={30} color="cyan" />
+                <IoIosArrowBack size={20} color="cyan" />
               ) : (
-                <IoIosArrowForward size={30} color="cyan" />
+                <IoIosArrowForward size={20} color="cyan" />
               )}
             </button>
           </header>
