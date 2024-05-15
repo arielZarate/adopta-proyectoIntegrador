@@ -13,13 +13,14 @@ const ListPets = () => {
 
   return (
     <>
-      <div>
+      <div className="z-10">
         {loading ? (
           <div className="col-span-full flex justify-center items-center">
             <Loader />
           </div>
         ) : filteredPets.length > 0 ? (
-          <div className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-4">
+          //grid grid-cols-1 gap-x-4 gap-y-6 mx-4  sm:grid-cols-2 md:grid-cols-3 md:ml-12  lg:grid-cols-4  lg:-mx-4 xl:grid-cols-5 2xl:grid-cols-6 xl:gap-x-4
+          <div className="grid grid-cols-1 gap-x-4 gap-y-6 mx-4  sm:grid-cols-2 md:grid-cols-3 md:ml-12  lg:grid-cols-4   xl:grid-cols-5 2xl:grid-cols-5 xl:gap-x-4">
             {filteredPets?.map((p: IPet) => (
               <Card pet={p} key={p._id} />
             ))}

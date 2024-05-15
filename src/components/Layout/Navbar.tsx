@@ -13,6 +13,9 @@ import avatar from "@/public/assets/avatar2.jpg";
 import { Color } from "@/interfaces/IColor";
 //////////////////////////////////////////
 
+import DrawerContent from "./Drawer";
+
+/////////////////////////////////////////7
 function NavBar() {
   //==============etates==========
   const [open, setOpen] = useState(false);
@@ -48,24 +51,25 @@ function NavBar() {
     setDarkMode(!darkMode);
   };
   return (
-    <div
-      style={{ backgroundColor: `${color}` }}
-      className="fixed left-0 top-0 w-full  z-10 ease-in duration-300  rounded-b-md"
-    >
-      {/* header web */}
+    <>
       <div
-        className={`mx-auto max-w-6xl h-16 flex items-center justify-between p-2 `}
-        style={{ color: textColor }}
+        style={{ backgroundColor: `${color}` }}
+        className="fixed left-0 top-0 w-full  z-10 ease-in duration-300  rounded-b-md "
       >
-        <Link href="/" className="flex justify-center items-center gap-1">
-          <Image
-            src={logo}
-            alt="logo"
-            width={45}
-            height={45}
-            className="object-contain img"
-          />
-          {/*  <h3
+        {/* header web */}
+        <div
+          className={`max-w-full h-16 flex items-center justify-between p-2 mx-2`}
+          style={{ color: textColor }}
+        >
+          <Link href="/" className="flex justify-center items-center gap-1">
+            <Image
+              src={logo}
+              alt="logo"
+              width={45}
+              height={45}
+              className="object-contain img"
+            />
+            {/*  <h3
             // style={{ color: `${textColor}` }}
             className=" font-bold text-md text-primary "
           >
@@ -73,129 +77,138 @@ function NavBar() {
           </h3>
 
          */}
-        </Link>
+          </Link>
 
-        <ul
-          style={{ color: `${textColor}` }}
-          className="hidden  sm:flex  items-center justify-center "
-        >
-          <li>
-            <MdDarkMode
-              size={30}
-              color={darkMode ? "white" : "#229c19"}
-              className={`p-1 rounded-full hover:border-2 ${
-                darkMode ? "border-white" : "border-[#229c19]"
-              } `}
-              onClick={toggleDarkMode}
-            />
-          </li>
-          <li>
-            <Link href="/" className="p-4">
-              Inicio
-            </Link>
-          </li>
-          <li>
-            <Link href="/about" className="p-4">
-              Nosotros
-            </Link>
-          </li>
-          <li>
-            <Link href="/#store" className="p-4">
-              Tienda
-            </Link>
-          </li>
+          {/**aca empieza el  */}
 
-          <li className="">
-            <div className="dropdown dropdown-end">
-              <div
-                tabIndex={0}
-                role="button"
-                //btn btn-ghost btn-circle
-                className=" avatar"
-              >
-                <div className="rounded-full">
-                  <Image alt="avatar" src={avatar} width={35} height={35} />
-                </div>
-              </div>
-              <ul
-                tabIndex={0}
-                className="z-[1] p-6 shadow menu menu-sm dropdown-content bg-slate-100 text-black  rounded-box w-52"
-              >
-                <li>
-                  <Link href="#" className="justify-between p-2">
-                    Profile
-                    <span className="badge">New</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="p-2">
-                    Settings
-                  </Link>
-                </li>
-
-                <li>
-                  <Link href="#" className="p-2">
-                    Logout
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-
-        {/*=============== Mobile================= */}
-
-        {/* ======mobile button menu======= */}
-        <div className="block  sm:hidden z-10" onClick={handleOpen}>
-          {/* aca de avcuerdo a si esta abierto o cerrado el drawer se ve un icono o otro */}
-
-          {open ? (
-            <AiOutlineClose size={20} color="black" />
-          ) : (
-            <AiOutlineMenu
-              size={25}
-              className={`p-1 rounded-full text-[${color}] hover:border-2 border-white `}
-            />
-          )}
-        </div>
-
-        {/*  mobile menu*/}
-
-        <div
-          className={
-            open
-              ? "sm:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-white  text-black text-center ease-in duration-500"
-              : "sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-white text-black text-center ease-in duration-500"
-          }
-        >
-          <ul className="">
+          <ul
+            style={{ color: `${textColor}` }}
+            className="hidden  sm:flex  items-center justify-center "
+          >
             <li>
-              <Link href="/" className="p-4 text-4xl  hover:text-gray-500">
+              <MdDarkMode
+                size={30}
+                color={darkMode ? "white" : "#229c19"}
+                className={`p-1 rounded-full hover:border-2 ${
+                  darkMode ? "border-white" : "border-[#229c19]"
+                } `}
+                onClick={toggleDarkMode}
+              />
+            </li>
+            <li>
+              <Link href="/" className="p-4">
                 Inicio
               </Link>
             </li>
-            <li className="m-4">
-              <Link
-                href="/about"
-                className="p-4  text-4xl  hover:text-gray-500"
-              >
-                Acerca de Nosotros
+            <li>
+              <Link href="/about" className="p-4">
+                Nosotros
               </Link>
             </li>
-            <li className="m-4">
-              <Link
-                href="/store"
-                className="p-4  text-4xl hover:text-gray-500   "
-              >
+            <li>
+              <Link href="/#store" className="p-4">
                 Tienda
               </Link>
             </li>
-          </ul>
-        </div>
 
-        {/* FIN de mobile button */}
+            <li className="">
+              <div className="dropdown dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  //btn btn-ghost btn-circle
+                  className=" avatar"
+                >
+                  <div className="rounded-full">
+                    <Image alt="avatar" src={avatar} width={35} height={35} />
+                  </div>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className=" p-6 shadow menu menu-sm dropdown-content bg-slate-100 text-black  rounded-box w-52"
+                >
+                  <li>
+                    <Link href="#" className="justify-between p-2">
+                      Profile
+                      <span className="badge">New</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#" className="p-2">
+                      Settings
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="#" className="p-2">
+                      Logout
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+
+          {/*=============== Mobile================= */}
+
+          {/* ======mobile button menu======= */}
+          <div className="block  sm:hidden z-50  relative" onClick={handleOpen}>
+            {/* aca de avcuerdo a si esta abierto o cerrado el drawer se ve un icono o otro */}
+
+            {open ? (
+              <AiOutlineClose size={27} color="#000000" className="" />
+            ) : (
+              <AiOutlineMenu
+                size={25}
+                className={`p-1 rounded-full text-[${color}] border-2  border-[${color}] hover:border-2 hover:border-sky-500 `}
+              />
+            )}
+          </div>
+
+          {/*  mobile menu*/}
+
+          <div
+            className={
+              open
+                ? "sm:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-white  text-black text-center ease-in-out duration-500"
+                : "sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-white text-black text-center ease-in-out duration-500"
+            }
+          >
+            <ul className="z-50">
+              <li>
+                <Link href="/" className="p-4 text-4xl  hover:text-gray-500">
+                  Inicio
+                </Link>
+              </li>
+              <li className="m-4">
+                <Link
+                  href="/about"
+                  className="p-4  text-4xl  hover:text-gray-500"
+                >
+                  Acerca de Nosotros
+                </Link>
+              </li>
+              <li className="m-4">
+                <Link
+                  href="/store"
+                  className="p-4  text-4xl hover:text-gray-500   "
+                >
+                  Tienda
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* FIN de mobile button */}
+        </div>
       </div>
-    </div>
+
+      {/* Enviar el estado 'open' al componente DrawerContent 
+      
+       <DrawerContent isNavBarOpen={open} />
+    
+      */}
+    </>
   );
 }
 

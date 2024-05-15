@@ -6,79 +6,90 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "@/components/Layout/Sidebar";
 import ListPets from "../ListPets";
 
+//
 function DrawerContent() {
   //==============================================
-  const [drawer, setDrawer] = useState(true);
+  const [openDrawer, setopenDrawer] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
-  const [loading, setLoading] = useState(true);
 
   //==============funciones===============================
   const toggleDrawer = () => {
-    setDrawer(!drawer);
+    setopenDrawer(!openDrawer);
   };
 
   useEffect(() => {
     const handleResize = () => {
       //antes 768 es para probar
-      setIsMobile(window.innerWidth <= 780);
-      if (window.innerWidth <= 780) {
-        setDrawer(false);
+      setIsMobile(window.innerWidth <= 640);
+      if (window.innerWidth <= 768) {
+        setopenDrawer(false);
+      } else {
+        setopenDrawer(true);
       }
     };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [drawer]);
+  }, [openDrawer]);
 
   //==========return===========
   return (
     <>
       <div className="container min-h-screen my-32 mx-auto">
         {/** div del grid principal*/}
-        <div className={`grid md:grid-cols-4 mx-1`}>
+        <div className={`grid md:grid-cols-4 `}>
           {/*sidebar */}
-
-          <header className="mt-10 ">
+          <header className="mt-10 mx-auto">
             <div
               className={`
-          ${isMobile ? "fixed top-36 left-0 h-full z-50 w-96 " : "col-span-1"}
-          ${drawer ? "md:block " : "hidden"}
-            bg-background-color md:w-64 min-h-full text-center font-bold text-2xl rounded-md
-             transition ease-in-out delay-150 duration-500
-            `}
+          ${
+            isMobile ? "fixed top-36 left-0 h-full z-10 w-11/12" : "col-span-1 "
+          }
+          ${openDrawer ? "md:block " : "hidden"}
+            bg-background-color min-h-full text-center font-bold text-2xl rounded-md
+            
+          `}
             >
-              <nav className={`min-h-full`}>
+              <nav className={`min-h-full z-30`}>
                 <Sidebar />
               </nav>
             </div>
 
             <button
               onClick={toggleDrawer}
-              className="text-black fixed top-24 left-10 z-50  border-2 border-primary rounded-full p-1"
+              className={` fixed top-24 left-10  border-2 border-cyan-500 rounded-full p-1
+              `}
+              style={{ zIndex: "1" }}
             >
-              {drawer ? (
-                <IoIosArrowBack size={30} className="" />
+              {openDrawer ? (
+                <IoIosArrowBack size={30} color="cyan" />
               ) : (
-                <IoIosArrowForward size={30} className="" />
+                <IoIosArrowForward size={30} color="cyan" />
               )}
             </button>
           </header>
-
           {/**main contenido */}
 
           <div
             className={`col-span-4
-            ${drawer ? "md:col-span-3" : ""}`}
+            ${openDrawer ? "md:col-span-3 " : ""}`}
           >
-            <div
-              className={`col-span-4 ${drawer ? "md:col-span-3 " : ""} ${
-                isMobile ? "backdrop-filter backdrop-blur-md" : ""
-              }`}
-            ></div>
-
             <main
-              className={` ${drawer ? " md:mt-2" : "md:-mt-4"}    mb-10  p-4 `}
+              className={` ${openDrawer ? "md:mt-2" : "md:-mt-4"}mb-10  p-4`}
             >
-              <ListPets />
+              <div
+                className={` ${
+                  openDrawer && isMobile ? "bg-white opacity-10" : ""
+                }
+                  `}
+              >
+                <div
+                  className={`relative ${
+                    isMobile && openDrawer ? "fixed" : ""
+                  }`}
+                >
+                  <ListPets />
+                </div>
+              </div>
             </main>
           </div>
         </div>
