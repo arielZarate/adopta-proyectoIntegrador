@@ -9,8 +9,8 @@ import ListPets from "../ListPets";
 //
 function DrawerContent() {
   //==============================================
-  const [openDrawer, setopenDrawer] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
+  const [openDrawer, setopenDrawer] = useState(false);
 
   //==============funciones===============================
   const toggleDrawer = () => {
@@ -20,16 +20,25 @@ function DrawerContent() {
   useEffect(() => {
     const handleResize = () => {
       //antes 768 es para probar
-      setIsMobile(window.innerWidth <= 640);
+      /*
+           setIsMobile(window.innerWidth <= 640);
       if (window.innerWidth <= 768) {
         setopenDrawer(false);
       } else {
         setopenDrawer(true);
       }
+    */
+
+      //cambio de logica
+      const mobile = window.innerWidth <= 640;
+      setIsMobile(mobile);
+      setopenDrawer(!mobile);
     };
+
+    handleResize(); //debe ejecutarse cuando inicia la pagina si o si
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [openDrawer]);
+  }, [isMobile]);
 
   //==========return===========
   return (
@@ -56,14 +65,18 @@ function DrawerContent() {
 
             <button
               onClick={toggleDrawer}
-              className={` fixed top-24 left-10  border-2 border-cyan-500 rounded-full p-1
+              className={` fixed top-24 left-10  border-2 border-[#716D6D] rounded-full p-1
               `}
               style={{ zIndex: "1" }}
             >
               {openDrawer ? (
-                <IoIosArrowBack size={20} color="cyan" />
+                <IoIosArrowBack
+                  size={20}
+                  color="#716D6D"
+                  className="font-bold"
+                />
               ) : (
-                <IoIosArrowForward size={20} color="cyan" />
+                <IoIosArrowForward size={20} color="#716D6D" />
               )}
             </button>
           </header>

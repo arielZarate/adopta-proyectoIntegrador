@@ -13,8 +13,6 @@ import avatar from "@/public/assets/avatar2.jpg";
 import { Color } from "@/interfaces/IColor";
 //////////////////////////////////////////
 
-import DrawerContent from "./Drawer";
-
 /////////////////////////////////////////7
 function NavBar() {
   //==============etates==========
@@ -156,11 +154,13 @@ function NavBar() {
             {/* aca de avcuerdo a si esta abierto o cerrado el drawer se ve un icono o otro */}
 
             {open ? (
-              <AiOutlineClose size={27} color="#000000" className="" />
+              <AiOutlineClose size={27} color="#000000" />
             ) : (
               <AiOutlineMenu
                 size={30}
-                className={`p-1 rounded-full text-[${color}] border-2  border-[${color}] hover:border-2 hover:border-sky-500 `}
+                color={`${textColor}`}
+                style={{ border: `1px solid ${textColor}` }}
+                className={`p-1 rounded-full `}
               />
             )}
           </div>
