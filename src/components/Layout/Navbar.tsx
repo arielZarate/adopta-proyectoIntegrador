@@ -104,8 +104,8 @@ function NavBar() {
               </Link>
             </li>
             <li>
-              <Link href="/#store" className="p-4">
-                Tienda
+              <Link href="/home" className="p-4">
+                Mascotas
               </Link>
             </li>
 
@@ -190,10 +190,10 @@ function NavBar() {
               </li>
               <li className="m-4">
                 <Link
-                  href="/store"
+                  href="/home"
                   className="p-4  text-4xl hover:text-gray-500   "
                 >
-                  Tienda
+                  Mascotas
                 </Link>
               </li>
             </ul>

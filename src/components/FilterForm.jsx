@@ -1,4 +1,4 @@
-import { usePetFilterHook } from "@/hooks/PetFiltertHook";
+import { usePetFilterHook } from "@/hooks/useFilterHooks";
 import React from "react";
 import { ActionTypes } from "@/interfaces/IAction.Types";
 //type Props = {};

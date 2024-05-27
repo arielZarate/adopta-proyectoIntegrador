@@ -1,5 +1,5 @@
 import React, { useId } from "react";
-import { usePetFilterHook } from "@/hooks/PetFiltertHook";
+import { usePetFilterHook } from "@/hooks/useFilterHooks";
 
 export const SearchBar = () => {
   const { searchByName, filterOptions } = usePetFilterHook();

@@ -4,24 +4,31 @@ export enum ActionTypes {
   SET_PETS = "SET_PETS",
   SET_LOADING = "SET_LOADING",
   SET_FILTER_OPTIONS = "SET_FILTER_OPTIONS",
+  SET_PET_DETAIL = "SET_PET_DETAIL",
 }
 
-/*
+export interface SetPetsAction {
+  type: ActionTypes.SET_PETS;
+  payload: IPet[];
+}
 
-type ActionPayload = {
-  [ActionTypes.SET_PETS]: IPet[];
-  [ActionTypes.SET_LOADING]: boolean;
-  [ActionTypes.SET_FILTER_OPTIONS]: IFilterOptions;
-};
+export interface SetLoadingAction {
+  type: ActionTypes.SET_LOADING;
+  payload: boolean;
+}
 
+export interface SetFilterOptionsAction {
+  type: ActionTypes.SET_FILTER_OPTIONS;
+  payload: IFilterOptions;
+}
 
-type Action = {
-  type: ActionTypes;
-  payload: ActionPayload[ActionTypes];
-};
-*/
+export interface SetPetDetailAction {
+  type: ActionTypes.SET_PET_DETAIL;
+  payload: IPet | null;
+}
 
 export type Action =
-  | { type: ActionTypes.SET_PETS; payload: IPet[] }
-  | { type: ActionTypes.SET_LOADING; payload: boolean }
-  | { type: ActionTypes.SET_FILTER_OPTIONS; payload: IFilterOptions };
+  | SetPetsAction
+  | SetLoadingAction
+  | SetFilterOptionsAction
+  | SetPetDetailAction;

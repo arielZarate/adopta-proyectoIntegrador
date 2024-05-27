@@ -1,3 +1,5 @@
+"use client";
+
 import React, {
   useState,
   useContext,
@@ -26,6 +28,8 @@ const initialState: State = {
   },
 
   dispatch: () => {},
+
+  detail: null,
 };
 
 // Reducer para gestionar el estado
@@ -37,6 +41,10 @@ const reducer = (state: State, action: Action): State => {
       return { ...state, loading: action.payload };
     case ActionTypes.SET_FILTER_OPTIONS:
       return { ...state, filterOptions: action.payload };
+
+    case ActionTypes.SET_PET_DETAIL:
+      //  console.log("reducer data", action.payload);
+      return { ...state, detail: action.payload };
     default:
       return state;
   }
@@ -46,19 +54,7 @@ const reducer = (state: State, action: Action): State => {
 //=============CREATE CONTEXT 1 DE 2=====================
 // Creamos el contexto
 // Creamos el contexto con valores predeterminados
-const PetContext = createContext<State>({
-  listPets: [],
-  loading: true,
-  filterOptions: {
-    name: "",
-    status: "",
-    species: "",
-    size: "",
-    gender: "",
-    breed: "",
-  },
-  dispatch: () => {},
-});
+const PetContext = createContext<State>(initialState);
 //==============FIN CREATE CONTEXT==================
 
 //==================== PROVIDER  2 DE 2=========================================

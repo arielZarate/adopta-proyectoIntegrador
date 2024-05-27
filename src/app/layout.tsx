@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import PetProvider from "@/context/PetContext";
+
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
+import CommonLayout from "@/components/Layout/CommonLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({
@@ -27,7 +30,9 @@ export default function RootLayout({
         <link rel="icon" href="src/app/favicon.ico" sizes="32x32" />
       </head>
       <body className={roboto.className}>
-        <main>{children}</main>
+        <PetProvider>
+          <CommonLayout>{children}</CommonLayout>
+        </PetProvider>
       </body>
     </html>
   );

@@ -1,21 +1,13 @@
 "use client";
-import HomeContainer from "@/containers/HomeContainer";
-import NavBar from "@/components/Layout/Navbar";
-import Footer from "@/components/Layout/Footer";
-import PetProvider from "@/context/PetContext";
-
-type Props = {};
-
-export default function HomePage({}: Props) {
+import DrawerContainer from "@/components/Layout/DrawerContainer";
+import CommonLayout from "@/components/Layout/CommonLayout";
+export default function HomePage() {
   return (
     <>
       <div className="min-h-screen flex flex-col">
-        <PetProvider>
-          <NavBar />
-          {/* Contenido principal */}
-          <HomeContainer />
-          <Footer />
-        </PetProvider>
+        {/* Contenido principal */}
+
+        <DrawerContainer />
       </div>
     </>
   );

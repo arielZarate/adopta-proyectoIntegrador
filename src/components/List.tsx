@@ -2,12 +2,12 @@
 
 import { IPet } from "@/interfaces/IPet";
 import { usePetContext } from "@/context/PetContext";
-import { usePetFilterHook } from "@/hooks/PetFiltertHook";
+import { usePetFilterHook } from "@/hooks/useFilterHooks";
 import Loader from "./Loader";
 
 import Card from "./Card";
 //TODO: componente listPets
-const ListPets = () => {
+const List = () => {
   let { loading } = usePetContext();
   let { filteredPets } = usePetFilterHook();
 
@@ -35,4 +35,4 @@ const ListPets = () => {
   );
 };
 
-export default ListPets;
+export default List;

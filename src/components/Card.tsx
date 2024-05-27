@@ -1,5 +1,6 @@
 import React from "react";
 import { IPet } from "@/interfaces/IPet";
+import Link from "next/link";
 type Props = {
   pet: IPet;
 };
@@ -39,21 +40,16 @@ const Card: React.FC<Props> = ({ pet }) => {
            
          
           */}
-
           <div className="text-gray-900 font-normal text-[12px]">
             {pet.breed}
           </div>
-
           {/* <p className="text-sm font-normal text-gray-900">{pet.description}</p> */}
 
-          {/*       <div tabIndex={0} className="collapse collapse-arrow ">
-            <div className="collapse-title text-sm hover:text-gre">
-              mostrar descripcion
-            </div>
-            <div className="collapse-content">
-              <p>{pet.description}</p>
-            </div>
-          </div> */}
+          <Link href={`/pet/${pet._id}`}>
+            <p className="text-sm font-light text-center underline text-gray-600 border-2 hover:text-gray-700  hover:font-semibold rounded-full py-1 px-auto my-2 hover:cursor-pointer">
+              ver mascota
+            </p>
+          </Link>
         </div>
       </div>
     </div>

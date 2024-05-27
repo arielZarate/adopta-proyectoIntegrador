@@ -4,10 +4,10 @@ import React, { useState, useEffect } from "react";
 
 //componentes
 import Sidebar from "@/components/Layout/Sidebar";
-import ListPets from "../ListPets";
+import List from "../List";
 
 //
-function DrawerContent() {
+function DrawerContainer() {
   //==============================================
   const [isMobile, setIsMobile] = useState(false);
   const [openDrawer, setopenDrawer] = useState(false);
@@ -63,22 +63,26 @@ function DrawerContent() {
               </nav>
             </div>
 
-            <button
-              onClick={toggleDrawer}
-              className={` fixed top-24 left-10  border-2 border-[#716D6D] rounded-full p-1
-              `}
+            <div
+              className="fixed top-24 left-10 flex items-center"
               style={{ zIndex: "1" }}
             >
-              {openDrawer ? (
-                <IoIosArrowBack
-                  size={20}
-                  color="#716D6D"
-                  className="font-bold"
-                />
-              ) : (
-                <IoIosArrowForward size={20} color="#716D6D" />
-              )}
-            </button>
+              <button
+                onClick={toggleDrawer}
+                className="border-2 border-[#716D6D] rounded-full p-1 flex items-center"
+              >
+                {openDrawer ? (
+                  <IoIosArrowBack
+                    size={20}
+                    color="#716D6D"
+                    className="font-bold"
+                  />
+                ) : (
+                  <IoIosArrowForward size={20} color="#716D6D" />
+                )}
+              </button>
+              <span className="ml-1 text-slate-700 font-bold">Filtros</span>
+            </div>
           </header>
           {/**main contenido */}
 
@@ -100,7 +104,7 @@ function DrawerContent() {
                     isMobile && openDrawer ? "fixed" : ""
                   }`}
                 >
-                  <ListPets />
+                  <List />
                 </div>
               </div>
             </main>
@@ -111,4 +115,4 @@ function DrawerContent() {
   );
 }
 
-export default DrawerContent;
+export default DrawerContainer;

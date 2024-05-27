@@ -1,3 +1,5 @@
+"use client";
+
 import Landing from "@/components/Landing";
 
 /*TODO: Esta es la 1era pagina que se ejecuta en el front
@@ -11,7 +13,7 @@ import Landing from "@/components/Landing";
 export default function App() {
   return (
     <>
-      <Landing />
+      <Landing />;
     </>
   );
 }
