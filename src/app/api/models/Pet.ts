@@ -70,6 +70,12 @@ const SchemaPet = new Schema(
       min: [1, "the min character is 2 "],
       max: [100, "the max character is 100"],
     },
+
+    address: {
+      type: Schema.Types.ObjectId,
+      ref: "Address",
+      required: true,
+    },
   },
   {
     timestamps: true, //guarda la hora de creacion

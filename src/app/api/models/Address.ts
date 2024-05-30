@@ -13,19 +13,19 @@ const AddressSchema = new Schema({
   //vecindario barrio
   neighborhood: {
     type: String,
-    required: [true, "Neighborhood is required"],
+    required: [false, "Neighborhood is required"],
   },
   street: {
     type: String,
-    required: [true, "Street is required"],
+    required: [false, "Street is required"],
   },
   number: {
     type: String,
-    required: [true, "Number is required"],
+    required: [false, "Number is required"],
   },
-  zone: {
+  reference: {
     type: String,
-    required: [true, "Zone description is required"],
+    required: [false, "description is required"],
   },
 });
 
