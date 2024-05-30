@@ -30,7 +30,7 @@ function DrawerContainer() {
     */
 
       //cambio de logica
-      const mobile = window.innerWidth <= 640;
+      const mobile = window.innerWidth <= 768;
       setIsMobile(mobile);
       setopenDrawer(!mobile);
     };

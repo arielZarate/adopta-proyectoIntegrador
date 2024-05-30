@@ -9,14 +9,14 @@ type Props = {
 const Card: React.FC<Props> = ({ pet }) => {
   return (
     <div className="group relative ">
-      <div className="border-2 border-secondary rounded-lg hover:scale-105  hover:border-blue-600 ">
+      <div className="border-2 border-secondary rounded-lg hover:scale-105  hover:border-slate-600 min-w-[150px]">
         <h3 className="text-sm text-neutral-500 bg-slate-100 text-center border-2 border-gray-300  py-1.5">
           <span className="font-bold text-base"> {pet.name}</span>
         </h3>
 
         <div className="px-0 ">
           {/*group-hover:opacity-85  hover:animate-pulse */}
-          <div className=" aspect-h-1 aspect-w-1 overflow-hidden   rounded-b-md h-60 w-full md:h-36  lg:h-48  xl:h-52 2xl:h-52 ">
+          <div className=" aspect-h-1 aspect-w-1 overflow-hidden rounded-b-md h-52 w-full md:h-36  lg:h-48  xl:h-52 2xl:h-52 shrink-0  ">
             <img
               src={pet.image.url}
               alt={pet.name}

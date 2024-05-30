@@ -4,10 +4,13 @@ import { ActionTypes } from "@/interfaces/IAction.Types";
 //type Props = {};
 
 const FilterForm = () => {
-  const { filterOptions, setFilterOptions, handleResetFilters, dispatch } =
-    usePetFilterHook();
+  const { filterOptions, handleResetFilters, dispatch } = usePetFilterHook();
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     /**
        esta forma se usaba con el PetFilterHook y el usecontextPet 
@@ -107,7 +110,7 @@ const FilterForm = () => {
               name="status"
               value="adoption"
               checked={filterOptions.status === "adoption"}
-              onChange={handleChange}
+              onChange={(e) => handleChange(e)}
             />
             <span className="ml-1">En Adopcion</span>
           </label>
@@ -231,7 +234,9 @@ const FilterForm = () => {
       <div className=" bg-transparent">
         <select
           name="breed"
-          onChange={handleChange}
+          onChange={(e) => {
+            handleChange(e);
+          }}
           value={filterOptions.breed}
           className="input input-bordered border-3 border-indigo-300 rounded-lg w-auto md:w-52 text-sm"
         >

@@ -20,7 +20,7 @@ const List = () => {
           </div>
         ) : filteredPets.length > 0 ? (
           //grid grid-cols-1 gap-x-4 gap-y-6 mx-4  sm:grid-cols-2 md:grid-cols-3 md:ml-12  lg:grid-cols-4  lg:-mx-4 xl:grid-cols-5 2xl:grid-cols-6 xl:gap-x-4
-          <div className="grid grid-cols-1 gap-x-4 gap-y-6 mx-4  sm:grid-cols-2 md:grid-cols-3 md:ml-12  lg:grid-cols-4   xl:grid-cols-5 2xl:grid-cols-5 xl:gap-x-4">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-6 mx-4  sm:grid-cols-2 md:grid-cols-3 md:ml-12  lg:grid-cols-4   xl:grid-cols-5 2xl:grid-cols-5 xl:gap-x-4">
             {filteredPets?.map((p: IPet) => (
               <Card pet={p} key={p._id} />
             ))}
