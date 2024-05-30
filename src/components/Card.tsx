@@ -16,7 +16,7 @@ const Card: React.FC<Props> = ({ pet }) => {
 
         <div className="px-0 ">
           {/*group-hover:opacity-85  hover:animate-pulse */}
-          <div className=" aspect-h-1 aspect-w-1 overflow-hidden rounded-b-md h-52 w-full md:h-36  lg:h-48  xl:h-52 2xl:h-52 shrink-0  ">
+          <div className=" aspect-h-1 aspect-w-1 overflow-hidden rounded-b-md h-48 w-full md:h-36  lg:h-48  xl:h-52 2xl:h-52 shrink-0  ">
             <img
               src={pet.image.url}
               alt={pet.name}
