@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import PetProvider from "@/context/PetContext";
-
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import CommonLayout from "@/components/Layout/CommonLayout";
