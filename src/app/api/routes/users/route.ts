@@ -1,6 +1,7 @@
 import User from "@/app/api/models/User";
 import { _get, _post } from "@/app/api/services/_User_service";
 import { handlerError } from "@/app/api/utils/HandlerError";
+import { NextResponse } from "next/server";
 
 //======================================
 //TODO: este metodo get devuelve una lista de mascotas o una mascota por nombre (query)
@@ -13,7 +14,7 @@ version 2 de como obtener el query de searchParams
   let query = searchParams.get("query");
  */
 
-export async function GET(req: Request) {
+export async function GET(req: Request, res: NextResponse) {
   //TODO: asi obtengo la query de la url si existe query
   //=========LA VERDAD LA COMPLICO ACA NEXT 🫠 (con express era req.search y nada mas)=================
   let url = new URL(req.url);
@@ -46,7 +47,9 @@ export async function GET(req: Request) {
         });
       }
       console.log("se encontro a ", userFound);
-      return Response.json(userFound);
+      //  return Response.json(userFound);
+
+      return NextResponse.json(userFound);
     }
 
     //por false solo busca de forma predeterminada

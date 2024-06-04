@@ -6,8 +6,8 @@ type Props = {};
 
 export default function Footer({}: Props) {
   return (
-    <footer className="footer footer-center p-10 text-base-content bg-white  h-full  md:max-h-60 max-w-full">
-      <nav className="grid md:grid-flow-col grid-flow-col-1 gap-4">
+    <footer className="footer footer-center  text-base-content bg-white  max-w-full my-10 pt-14 pb-7 mb-14">
+      <nav className="grid md:grid-flow-col grid-flow-col-1 gap-3">
         <Link href={"/about"} className="link link-hover">
           Nosotros
         </Link>
@@ -37,7 +37,8 @@ export default function Footer({}: Props) {
       </nav>
       <aside>
         <p className="font-bold mb-2">
-          Copyright © 2024 - Todos los derechos reservados por mascotas.org
+          Copyright © 2024 - Todos los derechos reservados por
+          www.petcomunitary.com
         </p>
 
         <p className="text-sm mb-7 font-normal font-sans">

@@ -23,6 +23,7 @@ export async function GET(req: Request, { params }: Params) {
 //TODO: put update
 export async function PUT(req: Request, { params }: Params) {
   let body = await req.json();
+
   let id = params.id;
   try {
     const petUpdated = await _update(id, body);

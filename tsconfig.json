@@ -32,7 +32,8 @@
     "src/components/FilterForm.tsx",
     "src/context/PetContext_version1.txtNoBorrar",
     "src/hooks/PetFiltertHook 2ts",
-    "src/hooks/PetFiltertHook_version1.txtNoBorrar"
+    "src/hooks/PetFiltertHook_version1.txtNoBorrar",
+    "src/app/about/page.tsx"
   ],
   "exclude": ["node_modules"]
 }

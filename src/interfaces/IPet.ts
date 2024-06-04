@@ -12,6 +12,7 @@ export interface IPet {
   size: string;
   image: { url: string };
   description: string;
+  address: string;
 }
 
 export type ArrayPets = {
