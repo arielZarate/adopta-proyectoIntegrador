@@ -108,6 +108,16 @@ const FilterForm = () => {
             <input
               type="radio"
               name="status"
+              value=""
+              checked={filterOptions.status === ""}
+              onChange={(e) => handleChange(e)}
+            />
+            <span className="ml-1">Todos</span>
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="status"
               value="adoption"
               checked={filterOptions.status === "adoption"}
               onChange={(e) => handleChange(e)}
@@ -141,7 +151,17 @@ const FilterForm = () => {
         <label className="font-bold mb-1 flex items-start text-slate-700">
           Animal
         </label>
-        <div className="flex gap-5 text-sm">
+        <div className="flex flex-col gap-1 items-start">
+          <label>
+            <input
+              type="radio"
+              name="species"
+              value=""
+              checked={filterOptions.species === ""}
+              onChange={handleChange}
+            />
+            <span className="ml-1">Todos</span>
+          </label>
           <label>
             <input
               type="radio"
@@ -170,6 +190,16 @@ const FilterForm = () => {
           Tamaño
         </label>
         <div className="flex flex-col gap-1 items-start">
+          <label>
+            <input
+              type="radio"
+              name="size"
+              value=""
+              checked={filterOptions.size === ""}
+              onChange={handleChange}
+            />
+            <span className="ml-1">Todos</span>
+          </label>
           <label>
             <input
               type="radio"
@@ -207,7 +237,17 @@ const FilterForm = () => {
         <label className="font-bold flex items-start mb-1 text-slate-700">
           Género
         </label>
-        <div className="flex gap-5 text-sm">
+        <div className="flex flex-col gap-1 items-start">
+          <label>
+            <input
+              type="radio"
+              name="gender"
+              value=""
+              checked={filterOptions.gender === ""}
+              onChange={handleChange}
+            />
+            <span className="ml-1">Todos</span>
+          </label>
           <label>
             <input
               type="radio"
@@ -231,7 +271,10 @@ const FilterForm = () => {
         </div>
       </div>
 
-      <div className=" bg-transparent">
+      <div className="my-2 bg-transparent">
+        <label className="font-bold flex items-start mb-1 text-slate-700">
+          Raza de animal
+        </label>
         <select
           name="breed"
           onChange={(e) => {
@@ -240,7 +283,7 @@ const FilterForm = () => {
           value={filterOptions.breed}
           className="input input-bordered border-3 border-indigo-300 rounded-lg w-auto md:w-52 text-sm"
         >
-          <option value="">Raza de animal</option>
+          <option value="">Todas</option>
           {breedOptions.sort().map((breed, index) => (
             <option key={index} value={breed}>
               {breed}
