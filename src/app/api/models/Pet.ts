@@ -71,11 +71,13 @@ const SchemaPet = new Schema(
       max: [100, "the max character is 100"],
     },
 
-    address: {
+    /**
+     address: {
       type: Schema.Types.ObjectId,
       ref: "Address",
       required: true,
     },
+   */
   },
   {
     timestamps: true, //guarda la hora de creacion

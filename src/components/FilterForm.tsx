@@ -39,63 +39,6 @@ const FilterForm = () => {
 */
 
   // Array de razas para perros y gatos
-  const breedOptions = [
-    "Labrador Retriever",
-    "German Shepherd",
-    "Golden Retriever",
-    "Bulldog",
-    "Beagle",
-    "Poodle",
-    "Rottweiler",
-    "Yorkshire Terrier",
-    "Boxer",
-    "Dachshund",
-    "Siberian Husky",
-    "Great Dane",
-    "Doberman Pinscher",
-    "Australian Shepherd",
-    "Cavalier King Charles Spaniel",
-    "Shih Tzu",
-    "Pug",
-    "Boston Terrier",
-    "Shetland Sheepdog",
-    "Maltese",
-    "Chihuahua",
-    "Pomeranian",
-    "Miniature Schnauzer",
-    "French Bulldog",
-    "Border Collie",
-    "Cocker Spaniel",
-    "Bernese Mountain Dog",
-    "Brittany",
-    "Havanese",
-    "Weimaraner",
-    "Pastor Aleman",
-    "Pitbull",
-    // Razas de gatos
-    "Persian",
-    "Maine Coon",
-    "Siamese",
-    "Ragdoll",
-    "Sphynx",
-    "British Shorthair",
-    "Bengal",
-    "Abyssinian",
-    "Scottish Fold",
-    "Birman",
-    "Russian Blue",
-    "Norwegian Forest Cat",
-    "Devon Rex",
-    "Oriental",
-    "Burmese",
-    "American Shorthair",
-    "Exotic Shorthair",
-    "Siberian",
-    "Cornish Rex",
-    "Tonkinese",
-    "Persa",
-    "Siamese",
-  ];
 
   return (
     <form className="flex flex-col items-start ml-7 gap-1 text-sm">
@@ -231,7 +174,8 @@ const FilterForm = () => {
         </div>
       </div>
 
-      <div className=" bg-transparent">
+      {/*
+            <div className=" bg-transparent">
         <select
           name="breed"
           onChange={(e) => {
@@ -248,6 +192,8 @@ const FilterForm = () => {
           ))}
         </select>
       </div>
+        
+        */}
 
       <div className="">
         <button

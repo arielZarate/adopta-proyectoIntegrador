@@ -1,4 +1,5 @@
 //===========INTERFACES===============
+import { ImageType, ImageListType } from "react-images-uploading";
 
 export interface IPet {
   _id?: string; // OPCIONAL: Se genera automáticamente
@@ -7,10 +8,10 @@ export interface IPet {
   species: string;
   breed: string;
   gender: string;
-  color: string;
+  colors: string[];
   age: string;
   size: string;
-  image: { url: string };
+  image: ImageType | null;
   description: string;
   address: string;
 }

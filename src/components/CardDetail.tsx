@@ -3,7 +3,7 @@ import { IPet } from "@/interfaces/IPet";
 import Link from "next/link";
 
 type Props = {
-  pet: IPet | null;
+  pet: any | null;
 };
 const CardDetail: React.FC<Props> = ({ pet }) => {
   if (!pet) {
@@ -17,7 +17,7 @@ const CardDetail: React.FC<Props> = ({ pet }) => {
           <div className="flex flex-col md:flex-row ">
             <div className="md:w-1/2 w-full p-2 ">
               <img
-                src={pet.image.url}
+                src={pet.image?.url}
                 alt={pet.name}
                 className="w-full h-72 md:h-80 object-cover rounded-md "
               />
@@ -46,6 +46,13 @@ const CardDetail: React.FC<Props> = ({ pet }) => {
                   Species:
                 </span>
                 <span className="text-sm text-gray-800">{pet.species}</span>
+              </div>
+              <div className="flex items-center mb-4">
+                <span className="text-sm font-semibold text-gray-700 mr-2">
+                  Color:
+                </span>
+
+                <span className="text-sm text-gray-800">{pet.color}</span>
               </div>
               <div className="flex items-center mb-4">
                 <span className="text-sm font-semibold text-gray-700 mr-2">
