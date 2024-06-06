@@ -5,6 +5,7 @@ export enum ActionTypes {
   SET_LOADING = "SET_LOADING",
   SET_FILTER_OPTIONS = "SET_FILTER_OPTIONS",
   SET_PET_DETAIL = "SET_PET_DETAIL",
+  ADD_PET = "ADD_PET", // Nueva acción para agregar una mascota
 }
 
 export interface SetPetsAction {
@@ -27,8 +28,13 @@ export interface SetPetDetailAction {
   payload: IPet | null;
 }
 
+export interface AddPetAction {
+  type: ActionTypes.ADD_PET;
+  payload: IPet;
+}
 export type Action =
   | SetPetsAction
   | SetLoadingAction
   | SetFilterOptionsAction
-  | SetPetDetailAction;
+  | SetPetDetailAction
+  | AddPetAction;

@@ -1,5 +1,5 @@
 //===========INTERFACES===============
-import { ImageType, ImageListType } from "react-images-uploading";
+import { ImageType } from "react-images-uploading";
 
 export interface IPet {
   _id?: string; // OPCIONAL: Se genera automáticamente
@@ -12,21 +12,17 @@ export interface IPet {
   age: string;
   size: string;
   image: ImageType | null;
-  description: string;
-  address: string;
+  description?: string;
+
+  //Ubicacion
+  province: string;
+  city: string;
+  neighborhood: string;
+  //street: string;
+  //numberAddress: string;
+  reference?: string;
 }
 
 export type ArrayPets = {
   pets: IPet[];
 };
-
-/*
-export interface FilterOptions {
-  name: string;
-  status: string;
-  species: string;
-  size: string;
-  gender: string;
-  breed: string;
-}
- */

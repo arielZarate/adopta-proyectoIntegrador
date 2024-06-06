@@ -5,7 +5,6 @@ import CardDetail from "@/components/CardDetail";
 import { useParams } from "next/navigation";
 import { getPetById } from "@/services/_PetService";
 import { ActionTypes } from "@/interfaces/IAction.Types";
-import { IPet } from "@/interfaces/IPet";
 import { usePetContext } from "@/context/PetContext";
 
 const PetDetailPage = () => {

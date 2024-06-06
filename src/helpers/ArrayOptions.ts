@@ -29,6 +29,7 @@ export const sizeOptions = [
 ];
 export const breedOptions = {
   dog: [
+    { value: "unknown", name: "Desconocido/Callejero" },
     { value: "labrador_retriever", name: "Labrador Retriever" },
     { value: "german_shepherd", name: "German Shepherd" },
     { value: "golden_retriever", name: "Golden Retriever" },
@@ -66,6 +67,7 @@ export const breedOptions = {
     { value: "pitbull", name: "Pitbull" },
   ],
   cat: [
+    { value: "unknown", name: "Desconocido/Callejero" },
     { value: "persian", name: "Persian" },
     { value: "maine_coon", name: "Maine Coon" },
     { value: "siamese", name: "Siamese" },
@@ -116,12 +118,39 @@ export const colorOptions = [
   { id: 2, name: "Blanco", color: "white" },
   { id: 3, name: "Marrón", color: "#B45F06" },
   { id: 4, name: "Gris", color: "gray" },
-  { id: 5, name: "Rojizo", color: "#FF0000" },
+  //{ id: 5, name: "Rojizo", color: "#FF0000" },
   { id: 6, name: "Amarillo", color: "#FFD300" },
   { id: 7, name: "Naranja", color: "#FFA500." },
   { id: 8, name: "Beige", color: "#F5F5DC" },
   { id: 9, name: "Canela", color: "#BD8A3E" },
   { id: 10, name: "Crema", color: "#F8DE7E" },
   { id: 11, name: "Plateado", color: "#BEBEBE" }, // Color plateado
-  { id: 12, name: "Azulado", color: "#4c2882" }, // Color azul
+  { id: 12, name: "Marron oscuro", color: "#804000" }, // Color azul
+];
+
+export const provinces = [
+  { id: 1, name: "Buenos Aires" },
+  { id: 2, name: "CABA" },
+  { id: 3, name: "Catamarca" },
+  { id: 4, name: "Chaco" },
+  { id: 5, name: "Chubut" },
+  { id: 6, name: "Córdoba" },
+  { id: 7, name: "Corrientes" },
+  { id: 8, name: "Entre Ríos" },
+  { id: 9, name: "Formosa" },
+  { id: 10, name: "Jujuy" },
+  { id: 11, name: "La Pampa" },
+  { id: 12, name: "La Rioja" },
+  { id: 13, name: "Mendoza" },
+  { id: 14, name: "Misiones" },
+  { id: 15, name: "Neuquén" },
+  { id: 16, name: "Río Negro" },
+  { id: 17, name: "Salta" },
+  { id: 18, name: "San Juan" },
+  { id: 19, name: "San Luis" },
+  { id: 20, name: "Santa Cruz" },
+  { id: 21, name: "Santa Fe" },
+  { id: 22, name: "Santiago del Estero" },
+  { id: 23, name: "Tierra del Fuego" },
+  { id: 24, name: "Tucumán" },
 ];

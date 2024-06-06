@@ -31,8 +31,12 @@ const FormFile: React.FC<PropsImages> = ({ image, setImage }) => {
 
   return (
     <>
-      <div className="flex flex-col items-center w-full max-w-lg px-2 py-2 mx-auto text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer dark:bg-gray-900 dark:border-gray-700 rounded-xl">
-        <MdOutlineCloudUpload size={28} color="#111827" className="mt-10" />
+      <div className="flex flex-col items-center w-full max-w-lg mx-auto text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer dark:bg-gray-900 dark:border-gray-700 rounded-xl">
+        <MdOutlineCloudUpload
+          size={28}
+          color="rgb(59 130 246)"
+          className="mt-4"
+        />
 
         <ImageUploading
           multiple //multiple images
@@ -51,7 +55,7 @@ const FormFile: React.FC<PropsImages> = ({ image, setImage }) => {
             errors,
           }) => (
             // write your building UI
-            <div className="pb-10">
+            <div className="pb-8">
               <button
                 style={
                   isDragging
@@ -67,15 +71,17 @@ const FormFile: React.FC<PropsImages> = ({ image, setImage }) => {
                 {...dragProps}
                 className=""
               >
-                <h2 className="mt-1 font-medium tracking-wide text-gray-700 dark:text-gray-200">
+                <h2 className="mt-1 font-medium tracking-wide text-gray-700 dark:text-gray-200 hover:text-blue-500 duration-150">
                   Subir Imagen
                 </h2>
 
-                {isDragging
-                  ? "arrastrando imagen"
-                  : " Sube o arrastra y suelta tu archivo PNG, JPG o JPEG"}
+                <p className="text-sm">
+                  {isDragging
+                    ? "arrastrando imagen"
+                    : " Sube o arrastra y suelta tu archivo PNG, JPG o JPEG"}
+                </p>
               </button>
-              &nbsp;
+
               {/*  <button onClick={onImageRemoveAll}>Remove all images</button> */}
               {errors && (
                 <div className="font-semibold text-red-500 text-sm">
@@ -96,18 +102,18 @@ const FormFile: React.FC<PropsImages> = ({ image, setImage }) => {
                 </div>
               )}
               {imageList.map((image, index) => (
-                <div key={index} className="image-item">
-                  <img src={image.dataURL} alt={index.toString()} width="100" />
-                  <div className="text-sm font-semibold my-1  ">
+                <div key={index} className="flex items-center">
+                  <img src={image.dataURL} alt={index.toString()} width="150" />
+                  <div className="text-sm font-light m-1  ">
                     <button
                       onClick={() => onImageUpdate(index)}
-                      className="border-2 border-slate-500 text-slate-700 rounded-md my-1 p-0.5 mx-0.5 "
+                      className="border border-slate-500 text-slate-900 rounded-md  p-0.5 mx-0.5 hover:bg-blue-500  hover:text-white duration-300 "
                     >
                       Actualizar
                     </button>
                     <button
                       onClick={() => onImageRemove(index)}
-                      className="border-2 border-slate-500  text-slate-700 rounded-md my-1 p-0.5 mx-0.5 "
+                      className="border border-slate-500  text-slate-900 rounded-md p-0.5 mx-0.5 hover:bg-slate-500  hover:text-white duration-300"
                     >
                       Eliminar
                     </button>

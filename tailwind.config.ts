@@ -16,7 +16,7 @@ const config: Config = {
 
       //aca podemos agregar colores personalizados 🙂
       colors: {
-        "background-color": "#fff",
+        "background-color": "#F0F0F0",
         primary: "#FFB347",
         secondary: "#CCCCCC",
         "navbar-bg": "#0f172a",

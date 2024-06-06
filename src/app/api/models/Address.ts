@@ -1,6 +1,11 @@
 import mongoose, { Schema, model, models } from "mongoose";
 
 const AddressSchema = new Schema({
+  _id: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    required: [true, "User is required"],
+  },
   province: {
     type: String,
     required: [true, "Province is required"],
@@ -10,18 +15,18 @@ const AddressSchema = new Schema({
     required: [true, "City is required"],
   },
 
-  /*
-  
   //vecindario barrio
   neighborhood: {
     type: String,
     required: [false, "Neighborhood is required"],
   },
+
+  /*
   street: {
     type: String,
     required: [false, "Street is required"],
   },
-  number: {
+  numberAddress: {
     type: String,
     required: [false, "Number is required"],
   },

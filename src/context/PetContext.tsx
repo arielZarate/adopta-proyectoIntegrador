@@ -1,89 +1,23 @@
 "use client";
 
-import React, {
-  useState,
-  useContext,
-  useEffect,
-  createContext,
-  useReducer,
-} from "react";
-
-import { ActionTypes, Action } from "@/interfaces/IAction.Types";
-import { fetchBackendPets } from "@/services/_PetService";
+import React, { useContext, createContext } from "react";
 import { State } from "@/interfaces/IPetsContext";
+import { initialState } from "@/hooks/useContextHooks";
 
-//==============USE REDUCER======================================
-
-// Estado inicial
-const initialState: State = {
-  listPets: [],
-  loading: true,
-  filterOptions: {
-    name: "",
-    status: "",
-    species: "",
-    size: "",
-    gender: "",
-    breed: "",
-  },
-
-  dispatch: () => {},
-
-  detail: null,
-};
-
-// Reducer para gestionar el estado
-const reducer = (state: State, action: Action): State => {
-  switch (action.type) {
-    case ActionTypes.SET_PETS:
-      return { ...state, listPets: action.payload };
-    case ActionTypes.SET_LOADING:
-      return { ...state, loading: action.payload };
-    case ActionTypes.SET_FILTER_OPTIONS:
-      return { ...state, filterOptions: action.payload };
-
-    case ActionTypes.SET_PET_DETAIL:
-      //  console.log("reducer data", action.payload);
-      return { ...state, detail: action.payload };
-    default:
-      return state;
-  }
-};
-//======================FIN USEREDUCER===========================================
+//aca importo el  hook que me trae el dispatch y el state
+import useContextHooks from "@/hooks/useContextHooks";
 
 //=============CREATE CONTEXT 1 DE 2=====================
 // Creamos el contexto
-// Creamos el contexto con valores predeterminados
-const PetContext = createContext<State>(initialState);
-//==============FIN CREATE CONTEXT==================
 
-//==================== PROVIDER  2 DE 2=========================================
+const PetContext = createContext<State>(initialState);
+
 type ContextProviderProps = {
   children: React.ReactNode;
 };
 const PetsProvider = ({ children }: ContextProviderProps) => {
-  //ACA USAMOS EL REDUCER A TRAVES DEL USEREDUCER
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const { state, dispatch } = useContextHooks();
 
-  //este useEffect se carga al iniciar la application trae todas las mascotas
-
-  useEffect(() => {
-    const fetchData = async () => {
-      dispatch({ type: ActionTypes.SET_LOADING, payload: true });
-      try {
-        const response = await fetchBackendPets();
-        dispatch({ type: ActionTypes.SET_PETS, payload: response });
-      } catch (error: any) {
-        console.error("Error fetching pets:", error.message);
-      } finally {
-        dispatch({ type: ActionTypes.SET_LOADING, payload: false });
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  // Retornamos el proveedor con el valor del contexto
   return (
     <PetContext.Provider value={{ ...state, dispatch }}>
       {children}
