@@ -21,10 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="es"
-      className=" text-slate-900 bg-background-color h-screen w-full m-0 p-0"
-    >
+    <html lang="es" className="  h-screen w-full m-0 p-0">
       <head>
         <link rel="icon" href="src/app/favicon.ico" sizes="32x32" />
       </head>

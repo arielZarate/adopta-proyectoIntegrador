@@ -7,5 +7,9 @@
 
 */
 
-@layer components {
+@layer {
+  body,
+  html {
+    @apply bg-background-color  text-slate-900;
+  }
 }

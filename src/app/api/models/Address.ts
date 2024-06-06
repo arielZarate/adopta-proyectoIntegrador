@@ -10,6 +10,8 @@ const AddressSchema = new Schema({
     required: [true, "City is required"],
   },
 
+  /*
+  
   //vecindario barrio
   neighborhood: {
     type: String,
@@ -23,6 +25,9 @@ const AddressSchema = new Schema({
     type: String,
     required: [false, "Number is required"],
   },
+
+*/
+
   reference: {
     type: String,
     required: [false, "description is required"],
