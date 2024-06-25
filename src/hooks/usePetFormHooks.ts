@@ -71,18 +71,19 @@ const usePetForm = () => {
     }
   };
 
-  //=============Send Data===============================
+  //=============Send Data ======================================
   const SendData = async (formData: FormData) => {
     try {
       console.log("formData", formData);
 
-      const res = await fetch("/api/upload", {
+      const res = await fetch("/api/routes/pets", {
         method: "POST",
         body: formData,
         //no se si hace falta mandar el "contect-type"
         //   headers: { "Content-Type": "multipart/form-data" },
       });
 
+      /*
       if (!res.ok) {
         // throw new Error(`Error: ${res.statusText}`);
 
@@ -93,6 +94,7 @@ const usePetForm = () => {
       console.log(dataOut);
 
       return dataOut;
+   */
     } catch (error) {
       console.log(error);
     }
@@ -131,11 +133,11 @@ const usePetForm = () => {
 
       const newPet = await SendData(formData);
 
-      if (newPet) {
+      /**
+       if (newPet) {
         dispatch({ type: ActionTypes.ADD_PET, payload: newPet });
       }
-
-      console.log(data);
+     */
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);

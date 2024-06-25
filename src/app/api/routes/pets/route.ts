@@ -71,8 +71,13 @@ export const POST = async (req: Request) => {
    */
 
   try {
-    const body = await req.json();
-    const petsCreated = await _post(body);
+    const body = await req.formData();
+
+    console.log(JSON.stringify(body));
+
+    /**
+     * 
+       const petsCreated = await _post(body);
 
     if (!petsCreated) {
       console.error("Error: Pets not created");
@@ -80,6 +85,10 @@ export const POST = async (req: Request) => {
     }
 
     return Response.json(petsCreated);
+     * 
+     */
+
+    return Response.json("Ariel");
   } catch (error) {
     handlerError(error);
   }
