@@ -1,4 +1,4 @@
-import { IPet } from "@/interfaces/IPet";
+import { IPetFront } from "@/interfaces/IPet";
 import { Action } from "./IAction.Types";
 
 export interface IFilterOptions {
@@ -8,6 +8,7 @@ export interface IFilterOptions {
   size: string;
   gender: string;
   breed: string;
+  province: string;
 }
 
 /*
@@ -36,9 +37,9 @@ export interface IPetContextType {
 
 // Definimos el tipo del estado
 export interface State {
-  listPets: IPet[];
+  listPets: IPetFront[];
   loading: boolean;
   filterOptions: IFilterOptions;
   dispatch: React.Dispatch<Action>; // Agregamos dispatch al tipo State
-  detail: IPet | null;
+  detail: IPetFront | null;
 }

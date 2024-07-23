@@ -61,7 +61,7 @@ const FormPet = () => {
                 <option value="">Seleccione una opcion</option>
                 {statusOptions.map((option) => (
                   <option key={option.value} value={option.value}>
-                    {option.name}
+                    {option.name} updateData
                   </option>
                 ))}
               </select>

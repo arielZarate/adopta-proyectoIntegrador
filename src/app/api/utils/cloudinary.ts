@@ -1,6 +1,5 @@
 import { v2 as cloudinary } from "cloudinary";
 import path from "path";
-import fs from "fs";
 
 // Configuration
 cloudinary.config({
@@ -17,9 +16,8 @@ const subfolder = "PetImages";
 
 //==============en nextjs se maneja asi ==================
 
-//opciones
-
-export const uploadCloudinary = async (file: File) => {
+//| null | undefined
+export const uploadCloudinary = async (file: File): Promise<string> => {
   try {
     const { size, type, name } = file; //destructuring file
     const filename = path.basename(name); //creo un filename usando el mismo nombre
@@ -33,7 +31,7 @@ export const uploadCloudinary = async (file: File) => {
 
     //================================================================
     //resolviendo promesa
-    const result = await new Promise((resolve, reject) => {
+    const result = await new Promise<string>((resolve, reject) => {
       //=============inicio de callback=======================
       const upload = cloudinary.uploader.upload_stream(
         {
@@ -50,9 +48,13 @@ export const uploadCloudinary = async (file: File) => {
           if (error) {
             // console.log(error.message);
             return reject(error);
-          } else {
+          } else if (result?.secure_url) {
             // console.log(result);
             return resolve(result?.secure_url);
+          } else {
+            return reject(
+              new Error("No se pudo retornar una secure_url desde cloudinary")
+            );
           }
         }
       );
@@ -64,6 +66,9 @@ export const uploadCloudinary = async (file: File) => {
   } catch (error) {
     if (error instanceof Error) {
       console.log(error.message);
+      throw error;
+    } else {
+      throw new Error("Hubo un error al subir la imagen a cloudinary");
     }
   }
 };

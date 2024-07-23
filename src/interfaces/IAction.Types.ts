@@ -1,5 +1,5 @@
 import { IFilterOptions } from "./IPetsContext";
-import { IPet } from "./IPet";
+import { IPetFront } from "./IPet";
 export enum ActionTypes {
   SET_PETS = "SET_PETS",
   SET_LOADING = "SET_LOADING",
@@ -10,7 +10,7 @@ export enum ActionTypes {
 
 export interface SetPetsAction {
   type: ActionTypes.SET_PETS;
-  payload: IPet[];
+  payload: IPetFront[];
 }
 
 export interface SetLoadingAction {
@@ -25,12 +25,12 @@ export interface SetFilterOptionsAction {
 
 export interface SetPetDetailAction {
   type: ActionTypes.SET_PET_DETAIL;
-  payload: IPet | null;
+  payload: IPetFront | null;
 }
 
 export interface AddPetAction {
   type: ActionTypes.ADD_PET;
-  payload: IPet;
+  payload: IPetFront;
 }
 export type Action =
   | SetPetsAction

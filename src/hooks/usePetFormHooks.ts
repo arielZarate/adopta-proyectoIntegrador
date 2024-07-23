@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { IPet } from "@/interfaces/IPet";
+import { IPetFront } from "@/interfaces/IPet";
 import { usePetContext } from "@/context/PetContext";
 import { ActionTypes } from "@/interfaces/IAction.Types";
+
 const usePetForm = () => {
-  const [data, setData] = useState<IPet>({
+  const [data, setData] = useState<IPetFront>({
     name: "",
     species: "",
     status: "",
@@ -23,7 +24,10 @@ const usePetForm = () => {
   const { dispatch } = usePetContext();
 
   //=============metodo para actualizar el estado=====================
-  const updateData = (name: keyof IPet, value: IPet[keyof IPet]) => {
+  const updateData = (
+    name: keyof IPetFront,
+    value: IPetFront[keyof IPetFront]
+  ) => {
     //console.log(name, value);
 
     setData(() => ({
@@ -41,7 +45,7 @@ const usePetForm = () => {
     const { name, value, type } = e.target;
 
     // console.log(value);
-    updateData(name as keyof IPet, value);
+    updateData(name as keyof IPetFront, value);
   };
 
   //===================================================================
@@ -72,29 +76,20 @@ const usePetForm = () => {
   };
 
   //=============Send Data ======================================
-  const SendData = async (formData: FormData) => {
+  const sendForm = async (formData: FormData) => {
     try {
-      console.log("formData", formData);
-
       const res = await fetch("/api/routes/pets", {
         method: "POST",
         body: formData,
-        //no se si hace falta mandar el "contect-type"
-        //   headers: { "Content-Type": "multipart/form-data" },
+        // headers: { "Content-Type": "multipart/form-data" },
       });
 
-      /*
       if (!res.ok) {
-        // throw new Error(`Error: ${res.statusText}`);
-
         alert(res.statusText);
       }
 
       const dataOut = await res.json();
-      console.log(dataOut);
-
       return dataOut;
-   */
     } catch (error) {
       console.log(error);
     }
@@ -106,41 +101,35 @@ const usePetForm = () => {
 
     try {
       const formData = new FormData();
-
-      //Asi insertamos los elementos al formData
+      // Agrega los campos de datos
       for (const [key, value] of Object.entries(data)) {
-        if (typeof value === "object" && value !== null) {
-          formData.append(key, JSON.stringify(value));
+        if (key === "image" && value) {
+          // Agrega la imagen como Blob
+          formData.append("image", value.file as Blob);
+          //console.log("imagen ", value.file as Blob);
+        } else {
+          // Agrega los demás campos como texto
+          formData.append(key, value as string);
         }
       }
 
-      if (data.image?.file) {
-        formData.append("image", data.image.file);
-      }
+      // Recorrer los datos de FormData
+      /** for (const [key, value] of formData.entries()) {
+        // `value` puede ser un `File` u otro tipo de datos
+        if (value instanceof File) {
+          console.log(key, value); // Muestra el nombre del archivo
+        } else {
+          console.log(key, value);
+        }
+      } */
 
-      /*
-         for (const [key, value] of Object.entries(data)) {
-      if (key === "image" && value instanceof File) {
-        formData.append(key, value);
-      } else if (typeof value === "object" && value !== null) {
-        formData.append(key, JSON.stringify(value));
-      } else {
-        formData.append(key, String(value));
-      }
-    }
-        
-        */
-
-      const newPet = await SendData(formData);
-
-      /**
-       if (newPet) {
-        dispatch({ type: ActionTypes.ADD_PET, payload: newPet });
-      }
-     */
+      //console.log("data", data);
+      const dataOut = await sendForm(formData);
+      console.log("console log hooks: ", dataOut);
+      return dataOut;
     } catch (error) {
       if (error instanceof Error) {
-        console.log(error.message);
+        console.log(error);
       }
     }
   };

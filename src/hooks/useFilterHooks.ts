@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { usePetContext } from "@/context/PetContext";
-import { IPet } from "@/interfaces/IPet";
+import { IPetFront } from "@/interfaces/IPet";
 import { ActionTypes } from "@/interfaces/IAction.Types";
 
 export const usePetFilterHook = () => {
   const { listPets, dispatch, filterOptions } = usePetContext();
 
-  const [filteredPets, setFilteredPets] = useState<IPet[]>([]);
+  const [filteredPets, setFilteredPets] = useState<IPetFront[]>([]);
 
   const handleResetFilters = () => {
     // Aplicar los filtros vacíos para mostrar todos los resultados
@@ -20,13 +20,16 @@ export const usePetFilterHook = () => {
         size: "",
         gender: "",
         breed: "",
+        province: "",
       },
     });
   };
 
   const applyFilters = () => {
+    if (!listPets || listPets.length === 0) return [];
+
     // Lógica de filtrado según los filtros seleccionados
-    return listPets.filter((pet: IPet) => {
+    return listPets.filter((pet) => {
       if (filterOptions.status && pet.status !== filterOptions.status)
         return false;
       if (filterOptions.gender && pet.gender !== filterOptions.gender)
@@ -42,6 +45,8 @@ export const usePetFilterHook = () => {
       ) {
         return false;
       }
+
+      //if(filterOptions.)
       return true;
     });
   };

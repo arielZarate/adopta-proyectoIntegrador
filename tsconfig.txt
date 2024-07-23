@@ -1,20 +1,26 @@
+
+
+
+
 {
   "compilerOptions": {
-    "target": "ES2015",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": true, //true
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "downlevelIteration": true,
-    "plugins": [{ "name": "next" }],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
       "@/*": ["./src/*"]
     }
@@ -24,9 +30,14 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/components/**/*.tsx", // Patrón genérico para incluir todos los componentes TypeScript/TSX
-    "src/context/**/*.js", // Patrón genérico para incluir todos los contextos JavaScript
-    "src/hooks/**/*.ts" // Patrón genérico para incluir todos los hooks TypeScript
+    "src/components/Landing.tsx",
+    "src/components/Layout/Navbar.jsx",
+    "src/context/PetsContext.js",
+    "src/components/FilterForm.tsx",
+    "src/context/PetContext_version1.txtNoBorrar",
+    "src/hooks/PetFiltertHook 2ts",
+    "src/hooks/PetFiltertHook_version1.txtNoBorrar",
+    "src/app/about/page.tsx"
   ],
   "exclude": ["node_modules"]
 }

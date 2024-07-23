@@ -1,4 +1,8 @@
-import { _get, _post } from "@/app/api/services/_Pet_service";
+import {
+  _getPets,
+  _postPet,
+  _searchPetsByName,
+} from "@/app/api/services/_Pet_service";
 import { handlerError } from "@/app/api/utils/HandlerError";
 
 //======================================
@@ -12,6 +16,7 @@ version 2 de como obtener el query de searchParams
   let query = searchParams.get("query");
  */
 
+//trabaja como ruta y controlador a la vez
 export async function GET(req: Request, res: Response) {
   let url = new URL(req.url);
   let urlSearchParams = url.searchParams;
@@ -19,76 +24,62 @@ export async function GET(req: Request, res: Response) {
   let searchName = urlSearchParams.get("search");
 
   try {
-    const pets = await _get(); //trae todos los pets
+    const pets = await _getPets(); //trae todos los pets
 
-    if (!pets) {
-      console.error("pets not found");
-      return Response.json("Pet not found 🥲", {
+    if (!pets || pets.length === 0) {
+      console.error("no hay datos en el back de mascotas");
+      return Response.json({
+        message: "Mascotas No Encontradas",
         status: 404,
       });
     }
 
-    //ahora valido por query==name
-    if (searchName) {
-      //ahora filtro por cada name 😁
-      const petFound = pets?.filter((p: { name: string | string[] }) =>
-        p.name.includes(searchName)
-      );
-
-      if (!petFound) {
-        console.log(` pet by query ${searchName} not found `);
-        return Response.json(`Pet by query ${searchName} not found`, {
+    const petFound = _searchPetsByName(pets, searchName);
+    if (!petFound) {
+      console.log(` pet by query ${searchName} not found `);
+      return Response.json(
+        `No ha sido posible encontrar una mascota con el nombre  ${searchName} , intente con otro nombre`,
+        {
           status: 400,
-        });
-      }
-      //console.log(petFound);
-      return Response.json(petFound);
+        }
+      );
     }
 
     //por false solo busca de forma predeterminada
     else {
       return Response.json(pets);
     }
-  } catch (error) {}
+  } catch (error) {
+    handlerError(error);
+  }
 }
 
-//post debe usarse con lapalabra post no usar handlers ni otro name
-export const POST = async (req: Request) => {
-  /**
-   *   const {
-    name,
-    status
-    species,
-    breed,
-    gender,
-    color,
-    age,
-    height,
-    image,
-    description,
-  } = await req.json();
-  
-   */
-
+//post debe usarse con la palabra post no usar handlers ni otro name
+export const POST = async (req: Request, res: Response) => {
   try {
-    const body = await req.formData();
+    const formData = await req.formData();
 
-    console.log(JSON.stringify(body));
+    const result = await _postPet(formData);
 
-    /**
-     * 
-       const petsCreated = await _post(body);
+    //console.log("result", result);
 
-    if (!petsCreated) {
-      console.error("Error: Pets not created");
-      return Response.json("Error: Pets not created", { status: 400 });
+    if (!result) {
+      return Response.json({ status: 404, message: "Mascota no creada" });
     }
 
-    return Response.json(petsCreated);
-     * 
-     */
-
-    return Response.json("Ariel");
+    return Response.json(
+      JSON.stringify({
+        message: "Masscota creada con exito",
+        payload: result,
+        status: 201,
+      })
+      /**
+       * {
+        status: 201,
+      }
+       * 
+       */
+    );
   } catch (error) {
     handlerError(error);
   }

@@ -1,9 +1,9 @@
 import React from "react";
-import { IPet } from "@/interfaces/IPet";
+import { IPetFront } from "@/interfaces/IPet";
 import { provinces } from "@/helpers/ArrayOptions";
 
 interface FormAddresProps {
-  data: IPet;
+  data: IPetFront;
   handleChange: (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement

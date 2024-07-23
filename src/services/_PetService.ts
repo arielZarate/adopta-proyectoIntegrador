@@ -2,10 +2,11 @@ export const fetchBackendPets = async () => {
   try {
     const res = await fetch(`/api/routes/pets`);
     const data = await res.json();
-    return data;
+
+    return Array.isArray(data) ? data : [];
   } catch (error) {
     console.error("Error al obtener datos de la API:", error);
-    return null; // O lanzar el error para manejarlo en el lugar donde se llama a esta función.
+    return []; // O lanzar el error para manejarlo en el lugar donde se llama a esta función.
   }
 };
 

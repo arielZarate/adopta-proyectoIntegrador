@@ -29,6 +29,10 @@ El proyecto tiene como objetivo ayudar a encontrar mascotas perdidas o animales 
 - Geolocalización para mostrar la ubicación aproximada de las mascotas perdidas.
 - Sistema de notificaciones para alertar a los usuarios sobre nuevas mascotas perdidas en su área.
 
+## Mail
+
+`petcomunitary@gmail.com`
+
 ## Flujo de Trabajo
 
 1. Los usuarios pueden buscar mascotas perdidas utilizando el formulario de búsqueda.

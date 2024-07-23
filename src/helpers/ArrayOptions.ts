@@ -119,13 +119,13 @@ export const colorOptions = [
   { id: 3, name: "Marrón", color: "#B45F06" },
   { id: 4, name: "Gris", color: "gray" },
   //{ id: 5, name: "Rojizo", color: "#FF0000" },
-  { id: 6, name: "Amarillo", color: "#FFD300" },
-  { id: 7, name: "Naranja", color: "#FFA500." },
-  { id: 8, name: "Beige", color: "#F5F5DC" },
-  { id: 9, name: "Canela", color: "#BD8A3E" },
-  { id: 10, name: "Crema", color: "#F8DE7E" },
-  { id: 11, name: "Plateado", color: "#BEBEBE" }, // Color plateado
-  { id: 12, name: "Marron oscuro", color: "#804000" }, // Color azul
+  //{ id: 6, name: "Amarillo", color: "#FFD300" },
+  { id: 5, name: "Naranja", color: "#FFA500." },
+  { id: 6, name: "Beige", color: "#F5F5DC" },
+  { id: 7, name: "Canela", color: "#BD8A3E" },
+  { id: 8, name: "Crema", color: "#F8DE7E" },
+  { id: 9, name: "Plateado", color: "#BEBEBE" }, // Color plateado
+  { id: 10, name: "Marron oscuro", color: "#804000" }, // Color azul
 ];
 
 export const provinces = [

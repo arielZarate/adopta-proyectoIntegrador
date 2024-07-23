@@ -16,6 +16,7 @@ const initialState: State = {
     size: "",
     gender: "",
     breed: "",
+    province: "",
   },
 
   dispatch: () => {},
@@ -23,7 +24,7 @@ const initialState: State = {
 };
 
 // DEFINIMOS EL REDUCER
-const reducer = (state: State, action: Action): State => {
+const reducer = (state = initialState, action: Action): State => {
   switch (action.type) {
     case ActionTypes.SET_PETS:
       return { ...state, listPets: action.payload };
@@ -54,10 +55,10 @@ const useContextHooks = () => {
     const fetchData = async () => {
       dispatch({ type: ActionTypes.SET_LOADING, payload: true });
       try {
-        const response = await fetchBackendPets();
-        dispatch({ type: ActionTypes.SET_PETS, payload: response });
+        const result = await fetchBackendPets();
+        dispatch({ type: ActionTypes.SET_PETS, payload: result });
       } catch (error: any) {
-        console.error("Error fetching pets:", error.message);
+        console.error("Error para obtener los datos:", error.message);
       } finally {
         dispatch({ type: ActionTypes.SET_LOADING, payload: false });
       }
@@ -67,7 +68,6 @@ const useContextHooks = () => {
   }, []);
 
   return {
-    //de aca retorno solo el state y el dispatch para usar en el contexto
     state,
     dispatch,
   };

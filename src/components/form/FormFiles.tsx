@@ -1,6 +1,5 @@
 "use client";
 
-import { IPet } from "@/interfaces/IPet";
 import React, { useState } from "react";
 import { MdOutlineCloudUpload } from "react-icons/md";
 
@@ -11,15 +10,15 @@ import ImageUploading, {
 
 //nota aunque en mi caso el numero maximo de imagenes sea 1 , igual lo hago array
 type PropsImages = {
-  image: ImageType | null;
-  setImage: (image: ImageType | null) => void;
+  image: ImageType | null | undefined;
+  setImage: (image: ImageType | null | undefined) => void;
 };
 
 const FormFile: React.FC<PropsImages> = ({ image, setImage }) => {
   const maxNumber = 1; //maximo numero de imagenes para subir
   // const [imagelocal, setImageLocal] = useState<ImageType | null>();
   const onChange = (
-    imageList: ImageType
+    imageList: ImageType[]
     // addUpdateIndex: number[] | undefined
   ) => {
     if (imageList.length > 0) {
@@ -39,9 +38,10 @@ const FormFile: React.FC<PropsImages> = ({ image, setImage }) => {
         />
 
         <ImageUploading
-          multiple //multiple images
+          multiple={false} //multiple images
           value={image ? [image] : []}
-          onChange={onChange}
+          //onChange={onChange}
+          onChange={(imageList) => onChange(imageList as ImageType[])}
           maxNumber={maxNumber}
         >
           {({
@@ -57,6 +57,7 @@ const FormFile: React.FC<PropsImages> = ({ image, setImage }) => {
             // write your building UI
             <div className="pb-8">
               <button
+                type="button"
                 style={
                   isDragging
                     ? { color: "red", fontWeight: "normal", fontSize: "15px" }
